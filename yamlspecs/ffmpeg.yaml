@@ -1,0 +1,17 @@
+---
+- package: ffmpeg multimedia framework 
+  name: ffmpeg 
+  version: "4.1.3" 
+  extension: tar.bz2
+  vendor_source: https://ffmpeg.org/releases/ffmpeg-{{ version }}.tar.bz2
+  description: >
+    ffmpeg {{ version }}.  FFmpeg is the leading multimedia framework, 
+    able to decode, encode, transcode, mux, demux, stream, filter and play pretty 
+    much anything that humans and machines have created. 
+  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{ version }}"
+  build:
+    configure_args: --enable-shared
+    modules: 
+    target: 
+  install:
+     installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{ root }} 
