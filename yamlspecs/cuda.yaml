@@ -2,10 +2,11 @@
 - package: CUDA Definitions 
   name: "{{ cuda.name }}" 
   version: "{{ cuda.version }}" 
+  vendor_source: http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/{{ cuda.src_tarball }}
   root: 
   description:
   cuda:
     name: cuda
-    version: "10.1.168_418.67"
+    version: "10.1.243_418.87.00"
     extension: run
     src_tarball: "{{ cuda.name }}_{{ cuda.version }}_linux.{{ cuda.extension }}"
