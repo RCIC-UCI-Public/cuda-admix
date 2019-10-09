@@ -1,0 +1,11 @@
+---
+- package: CUDA Definitions 
+  name: "{{ cuda.name }}" 
+  version: "{{ cuda.version }}" 
+  root: 
+  description:
+  cuda:
+    name: cuda
+    version: "10.1.168_418.67"
+    extension: run
+    src_tarball: "{{ cuda.name }}_{{ cuda.version }}_linux.{{ cuda.extension }}"

@@ -1,0 +1,31 @@
+!include cuda.yaml
+---
+- package: CUDA toolkit
+  basename: cuda-toolkit
+  name: "{{ basename }}"
+  version: "{{ cuda.version }}" 
+  src_tarball: "{{ cuda.src_tarball }}" 
+  description: >
+    CUDA Version {{ version }}
+  extension: "{{ cuda.extension }}"
+  root: "{{ pkg_defaults.app_path }}/{{ cuda.name }}/{{ version }}"
+  no_src_dir: true
+  addfile: 
+    - filter-requires-{{ name }}.sh
+  tmpdir: $(REDHAT.BUILD)/cudaTmp
+  extractDir: $(REDHAT.BUILD)/cudaExtract
+  contents: bin  EULA.txt  include  lib64 libnvvp nvml share targets version.txt jre nvvm src tools
+  build:
+    configure: echo no configure required 
+    pkgmake: >
+      mkdir {{ tmpdir }}; mkdir {{ extractDir }};
+      export TMPDIR={{ tmpdir }};
+      sh {{ src_tarball }} --extract={{ extractDir }}
+    target: 
+    modules: none
+  install:
+    makeinstall: >
+      for x in {{ contents }}; do  cp -pR {{ extractDir }}/{{ basename }}/$$x $(ROOT){{ root }}; done
+  files:
+    - "{{ root }}"
+  rpm: !include rpm.extras.filter.yaml

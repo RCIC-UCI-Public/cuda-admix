@@ -1,0 +1,17 @@
+!include cuda-toolkit.yaml
+---
+- package: CUDA Cublas 
+  name: "cuda-cublas"
+  description: >
+    CUDA CUBLAS {{ version }} 
+  src_tarball: 
+  build:
+    configure: echo no configure required 
+    pkgmake: echo files extracted during {{ basename }} build 
+    modules: None 
+  install:
+    makeinstall: >
+      cp -pR {{ extractDir }}/cublas $(ROOT){{ root }}
+  rpm: 
+  files:
+    - "{{ root }}/*"
