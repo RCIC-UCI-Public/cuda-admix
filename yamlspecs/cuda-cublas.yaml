@@ -15,3 +15,5 @@
   rpm: 
   files:
     - "{{ root }}/*"
+  requires:
+    - "{{ basename }}_{{ version }}"

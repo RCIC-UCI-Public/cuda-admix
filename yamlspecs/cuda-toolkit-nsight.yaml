@@ -13,4 +13,4 @@
   files:
     - "{{ root }}/*"
   requires: 
-    - "{{ basename }}"
+    - "{{ basename }}_{{ version }}"
