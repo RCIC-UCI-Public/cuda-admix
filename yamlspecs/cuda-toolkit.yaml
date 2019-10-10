@@ -9,7 +9,7 @@
     CUDA Version {{ version }}
   extension: "{{ cuda.extension }}"
   root: "{{ pkg_defaults.app_path }}/{{ cuda.name }}/{{ version }}"
-  no_src_dir: true
+  no_src_dir: True
   addfile: 
     - filter-requires-{{ name }}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp
