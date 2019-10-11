@@ -1,28 +1,32 @@
+!include cuda-toolkit.yaml
 ---
-- package: CUDA toolkit 
-  name: cuda
-  version: "10.1.168_418.67" 
-  extension: run 
-  src_tarball: "{{ name }}_{{ version }}_linux.{{ extension }}"
-  vendor_source:  
-  description:  CUDA Version {{ version }}
-  root: "{{ pkg_defaults.app_path }}/{{ name }}/{{ version }}"
-  no_src_dir: true
+- package: CUDA toolkit samples 
+  name: "{{ basename }}-samples"
+  description: >
+    CUDA Toolkit Version {{ version }} samples 
+  contents: cuda-samples 
+  src_tarball: 
+
   utilities_dir: cuda-samples/1_Utilities
   utilities:  bandwidthTest deviceQueryDrv topologyQuery deviceQuery   p2pBandwidthLatencyTest UnifiedMemoryPerf
+
   build:
     configure: echo no configure required 
-    pkgmake: >
-      mkdir tmp; mkdir {{ name }};
-      export TMPDIR=$$(pwd)/tmp;
-      sh {{ src_tarball }} --extract=$$(pwd)/{{ name }};
-      export CUDA_PATH=$$(pwd)/cuda/cuda-toolkit;
-      cd {{ name  }}/{{utilities_dir}};
-      for p in {{ utilities }}; do (cd $$p; make); done
-    target: 
     modules:
+      - "{{ cuda.name }}/{{ cuda.version }}"
+    pkgmake: >
+      mkdir {{ name }};
+      cp -R {{ extractDir}}/{{ contents }} {{ name }};
+      cd {{ name }}/{{utilities_dir}};
+      for p in {{ utilities }}; do (cd $$p; make; /bin/rm $$p); done
+
   install:
     makeinstall: >
-      mv {{ name }}/* $(ROOT){{ root }}
+      mv {{ name }}/{{contents}} $(ROOT){{ root }}
+  requires: 
+    - "{{ basename }}_{{ version }}"
+
   files:
-    - "{{ root }}"
+    - "{{ root }}/{{ contents }}"
+
+  rpm: !include rpm.extras.yaml

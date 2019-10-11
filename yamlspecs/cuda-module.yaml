@@ -1,0 +1,38 @@
+# Builds the module for cuda It first includes all the definitions
+# for the cuda-toolkit build and then overwrites specific keys
+!include cuda-toolkit.yaml
+!include /opt/rcic/include/rcic-module.yaml
+---
+- package: CUDA Module
+  pkgname: "{{ cuda.name }}-module_{{version}}"
+
+  src_tarball: None 
+  no_src_dir: True
+
+  toolkit_prefix: "{{ root }}"
+  cublas_prefix: "{{ root }}/cublas"
+  
+  description: |
+    module file for CUDA toolkit version {{ version }}.
+
+    CUDA_PATH = {{ root }}
+
+  ## Define the key components of the environment module
+  module:
+    name: "{{ version }}"
+    path: "{{ pkg_defaults.module.path }}/{{ cuda.name }}"
+    setenv:
+      - CUDA_PATH {{ root }}
+
+    prepend_path:
+      - "{{ pkg_defaults.module.prepend_path }}"
+      - -d " " LDFLAGS "-Wl,-rpath,{{ toolkit_prefix }}/lib64" 
+      - -d " " LDFLAGS "-L{{ toolkit_prefix }}/lib64" 
+      - -d " " LDFLAGS "-Wl,-rpath,{{ cublas_prefix }}/lib64" 
+      - -d " " LDFLAGS "-L{{ cublas_prefix }}/lib64" 
+      - LD_LIBRARY_PATH {{ toolkit_prefix }}/lib64
+      - LD_LIBRARY_PATH {{ cublas_prefix }}/lib64
+
+  requires:
+    - "{{ basename }}_{{ version }}"
+    - rcic-module-support
