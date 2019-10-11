@@ -11,6 +11,7 @@
 
   toolkit_prefix: "{{ root }}"
   cublas_prefix: "{{ root }}/cublas"
+  extras_prefix: "{{ root }}/extras"
   
   description: |
     module file for CUDA toolkit version {{ version }}.
@@ -30,8 +31,11 @@
       - -d " " LDFLAGS "-L{{ toolkit_prefix }}/lib64" 
       - -d " " LDFLAGS "-Wl,-rpath,{{ cublas_prefix }}/lib64" 
       - -d " " LDFLAGS "-L{{ cublas_prefix }}/lib64" 
+      - -d " " LDFLAGS "-Wl,-rpath,{{ extras_prefix }}/lib64" 
+      - -d " " LDFLAGS "-L{{ extras_prefix }}/lib64" 
       - LD_LIBRARY_PATH {{ toolkit_prefix }}/lib64
       - LD_LIBRARY_PATH {{ cublas_prefix }}/lib64
+      - LD_LIBRARY_PATH {{ extras_prefix }}/lib64
 
   requires:
     - "{{ basename }}_{{ version }}"

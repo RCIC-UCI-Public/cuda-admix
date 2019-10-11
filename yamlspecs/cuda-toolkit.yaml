@@ -18,6 +18,7 @@
   build:
     configure: echo no configure required 
     pkgmake: >
+      if [ -d {{ extractDir }} ]; then /bin/rm -rf {{ extractDir }}; fi;
       mkdir {{ tmpdir }}; mkdir {{ extractDir }};
       export TMPDIR={{ tmpdir }};
       sh {{ src_tarball }} --extract={{ extractDir }}

@@ -8,3 +8,4 @@ cuda-toolkit-nsight
 cuda-toolkit-extras
 cuda-cublas 
 cuda-toolkit-samples
+cuda-driver
