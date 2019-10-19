@@ -6,6 +6,9 @@
     CUDA Toolkit Version {{ version }} Driver. This is just the
     {{ contents }} file put into the {{ root }} tree.   
   contents: NVIDIA-Linux-x86_64-418.87.00.run 
+  cmdfile: disable-nouveau.yml 
+  addfile:
+    - "{{ cmdfile }}" 
   src_tarball: 
   build:
     configure: echo no configure required 
@@ -13,7 +16,8 @@
     modules: None 
   install:
     makeinstall: >
-      for x in {{ contents }}; do  cp -pR {{ extractDir }}/$$x $(ROOT){{ root }}; done
+      for x in {{ contents }}; do  cp -pR {{ extractDir }}/$$x $(ROOT){{ root }}; done;
+      $(INSTALL) {{ cmdfile }} $(ROOT)/{{ root }}
 
   files:
     - "{{ root }}/*"

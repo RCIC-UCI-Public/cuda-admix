@@ -1,0 +1,25 @@
+---
+- name: Blacklist drivers
+  hosts: localhost
+  tasks:
+    - name: Disable Nouveau
+      kernel_blacklist:
+        name: nouveau
+        state: present
+    # From https://github.com/redhat-openstack/ansible-nfv/blob/master/roles/packet_gen/moongen/install/tasks/main.yml
+    - name: Add parameters to grub
+      lineinfile:
+        dest: /etc/default/grub
+        regexp: '^GRUB_CMDLINE_LINUX="(?!.* {{ item.regex }})(.*)"'
+        line: 'GRUB_CMDLINE_LINUX="\1 {{ item.context }}"'
+        state: present
+        backrefs: yes
+      loop:
+        - { regex: 'rd.driver.blacklist=nouveau', context: 'rd.driver.blacklist=nouveau' }
+        - { regex: 'nouveau.modeset=0', context: 'nouveau.modeset=0' }
+      register: grub
+
+    - name: Make grub
+      command: "grub2-mkconfig -o /boot/grub2/grub.cfg"
+      when: grub.changed
+      register: makegrub
