@@ -5,10 +5,11 @@
   name: "{{ basename }}"
   version: "{{ cuda.version }}" 
   src_tarball: "{{ cuda.src_tarball }}" 
+  pkgname: "{{ basename }}_{{ cuda.shortversion }}"
   description: >
     CUDA Version {{ version }}
   extension: "{{ cuda.extension }}"
-  root: "{{ pkg_defaults.app_path }}/{{ cuda.name }}/{{ version }}"
+  root: "{{ pkg_defaults.app_path }}/{{ cuda.name }}/{{ cuda.shortversion }}"
   no_src_dir: True
   addfile: 
     - filter-requires-{{ name }}.sh

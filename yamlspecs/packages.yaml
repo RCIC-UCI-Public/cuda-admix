@@ -1,0 +1,23 @@
+---
+bootstrap:
+   - cuda-toolkit
+   - cuda-module
+system:
+   - libaio-devel
+   - openmpi-devel
+build:
+   - ffmpeg53
+   - ffmpeg54
+   - ffmpeg
+   - cuda-toolkit
+   - cuda-module
+   - cuda-toolkit-doc
+   - cuda-toolkit-nsight
+   - cuda-toolkit-extras
+   - cuda-cublas 
+   - cuda-samples
+   - cuda-driver
+manifest:
+   - "{{ build }}"
+
+

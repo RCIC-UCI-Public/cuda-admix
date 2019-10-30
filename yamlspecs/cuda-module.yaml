@@ -4,7 +4,7 @@
 !include /opt/rcic/include/rcic-module.yaml
 ---
 - package: CUDA Module
-  pkgname: "{{ cuda.name }}-module_{{version}}"
+  pkgname: "{{ cuda.name }}-module_{{cuda.shortversion}}"
 
   src_tarball: None 
   no_src_dir: True
@@ -20,8 +20,8 @@
 
   ## Define the key components of the environment module
   module:
-    name: "{{ version }}"
-    path: "{{ pkg_defaults.module.path }}/{{ cuda.name }}"
+    name: "{{ cuda.shortversion }}"
+    path: "{{ pkg_defaults.module.RCICmpath }}/{{ cuda.name }}"
     setenv:
       - CUDA_PATH {{ root }}
 
@@ -38,5 +38,5 @@
       - LD_LIBRARY_PATH {{ extras_prefix }}/lib64
 
   requires:
-    - "{{ basename }}_{{ version }}"
+    - "{{ basename }}_{{ cuda.shortversion }}"
     - rcic-module-support
