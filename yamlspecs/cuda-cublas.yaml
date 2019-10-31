@@ -2,6 +2,7 @@
 ---
 - package: CUDA Cublas 
   name: "cuda-cublas"
+  basename: "{{ name }}"
   description: >
     CUDA CUBLAS {{ version }} 
   src_tarball: 

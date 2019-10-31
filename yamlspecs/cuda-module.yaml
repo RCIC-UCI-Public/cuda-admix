@@ -5,7 +5,7 @@
 ---
 - package: CUDA Module
   pkgname: "{{ cuda.name }}-module_{{cuda.shortversion}}"
-
+  category: TOOLS
   src_tarball: None 
   no_src_dir: True
 
@@ -21,7 +21,7 @@
   ## Define the key components of the environment module
   module:
     name: "{{ cuda.shortversion }}"
-    path: "{{ pkg_defaults.module.RCICmpath }}/{{ cuda.name }}"
+    path: "{{ pkg_defaults.module.RCICmpath }}/{{ category }}/{{ cuda.name }}"
     setenv:
       - CUDA_PATH {{ root }}
 

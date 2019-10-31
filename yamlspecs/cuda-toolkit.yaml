@@ -1,11 +1,11 @@
 !include cuda.yaml
 ---
 - package: CUDA toolkit
-  basename: cuda-toolkit
-  name: "{{ basename }}"
+  basename: cuda-toolkit 
+  name: "{{ basename }}" 
   version: "{{ cuda.version }}" 
   src_tarball: "{{ cuda.src_tarball }}" 
-  pkgname: "{{ basename }}_{{ cuda.shortversion }}"
+  pkgname: "{{ name }}_{{ cuda.shortversion }}"
   description: >
     CUDA Version {{ version }}
   extension: "{{ cuda.extension }}"
