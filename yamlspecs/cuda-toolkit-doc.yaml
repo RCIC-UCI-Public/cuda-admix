@@ -1,15 +1,15 @@
 !include cuda-toolkit.yaml
 ---
 - package: CUDA toolkit documentation
-  name: "{{ basename }}-doc"
+  name: "{{basename}}-doc"
   description: >
-    CUDA Toolkit Version {{ version }} Documentation
+    CUDA Toolkit Version {{version}} Documentation
   contents: doc 
   src_tarball: 
   build:
     configure: echo no configure required 
-    pkgmake: echo files extracted during {{ basename }} build 
+    pkgmake: echo files extracted during {{basename}} build 
     modules: None 
   files:
-    - "{{ root }}/*"
+    - "{{root}}/*"
   rpm: 

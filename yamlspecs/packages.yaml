@@ -18,6 +18,6 @@ build:
    - cuda-samples
    - cuda-driver
 manifest:
-   - "{{ build }}"
+   - "{{build}}"
 
 

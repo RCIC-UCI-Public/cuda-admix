@@ -1,24 +1,24 @@
 !include cuda-toolkit.yaml
 ---
 - package: CUDA Driver Run file 
-  name: "{{ cuda.name }}-driver"
+  name: "{{cuda.name}}-driver"
   description: >
-    CUDA Toolkit Version {{ version }} Driver. This is just the
-    {{ contents }} file put into the {{ root }} tree.   
+    CUDA Toolkit Version {{version}} Driver. This is just the
+    {{contents}} file put into the {{root}} tree.   
   contents: NVIDIA-Linux-x86_64-418.87.00.run 
   cmdfile: disable-nouveau.yml 
   addfile:
-    - "{{ cmdfile }}" 
+    - "{{cmdfile}}" 
   src_tarball: 
   build:
     configure: echo no configure required 
-    pkgmake: echo files extracted during {{ basename }} build 
+    pkgmake: echo files extracted during {{basename}} build 
     modules: None 
   install:
     makeinstall: >
-      for x in {{ contents }}; do  cp -pR {{ extractDir }}/$$x $(ROOT){{ root }}; done;
-      $(INSTALL) {{ cmdfile }} $(ROOT)/{{ root }}
+      for x in {{contents}}; do  cp -pR {{extractDir}}/$$x $(ROOT){{root}}; done;
+      $(INSTALL) {{cmdfile}} $(ROOT)/{{root}}
 
   files:
-    - "{{ root }}/*"
+    - "{{root}}/*"
   rpm: 

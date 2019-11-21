@@ -2,19 +2,19 @@
 ---
 - package: CUDA Cublas 
   name: "cuda-cublas"
-  basename: "{{ name }}"
+  basename: "{{name}}"
   description: >
-    CUDA CUBLAS {{ version }} 
+    CUDA CUBLAS {{version}} 
   src_tarball: 
   build:
     configure: echo no configure required 
-    pkgmake: echo files extracted during {{ basename }} build 
+    pkgmake: echo files extracted during {{basename}} build 
     modules: None 
   install:
     makeinstall: >
-      cp -pR {{ extractDir }}/cublas $(ROOT){{ root }}
+      cp -pR {{extractDir}}/cublas $(ROOT){{root}}
   rpm: 
   files:
-    - "{{ root }}/*"
+    - "{{root}}/*"
   requires:
-    - "{{ basename }}_{{ version }}"
+    - "{{basename}}_{{version}}"
