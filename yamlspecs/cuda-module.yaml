@@ -1,42 +1,43 @@
-# Builds the module for cuda It first includes all the definitions
-# for the cuda-toolkit build and then overwrites specific keys
+# Builds the module for cuda.
 !include cuda-toolkit.yaml
 !include /opt/rcic/include/rcic-module.yaml
 ---
 - package: CUDA Module
-  pkgname: "{{ cuda.name }}-module_{{cuda.shortversion}}"
+  pkgname: "{{cuda.name}}-module_{{cuda.shortversion}}"
   category: TOOLS
-  src_tarball: None 
-  no_src_dir: True
-
-  toolkit_prefix: "{{ root }}"
-  cublas_prefix: "{{ root }}/cublas"
-  extras_prefix: "{{ root }}/extras"
-  
+  toolkit_prefix: "{{root}}/lib64"
+  nvvm_prefix: "{{root}}/nvvm/lib64"
+  cublas_prefix: "{{root}}/cublas/lib64"
+  extras_cupti_prefix: "{{root}}/extras/CUPTI/lib64"
+  extras_debug_prefix: "{{root}}/extras/Debugger/lib64"
   description: |
-    module file for CUDA toolkit version {{ version }}.
-
-    CUDA_PATH = {{ root }}
-
-  ## Define the key components of the environment module
+    module file for CUDA toolkit version {{version}}.
+    Environment CUDA_PATH = {{root}}
   module:
-    name: "{{ cuda.shortversion }}"
-    path: "{{ pkg_defaults.module.RCICmpath }}/{{ category }}/{{ cuda.name }}"
+    logname: "cuda/{{cuda.shortversion}}"
+    name: "{{cuda.shortversion}}"
+    path: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{cuda.name}}"
     setenv:
-      - CUDA_PATH {{ root }}
-
+      - CUDA_PATH {{root}}
+      - CUDA_HOME {{root}}
     prepend_path:
-      - "{{ pkg_defaults.module.prepend_path }}"
-      - -d " " LDFLAGS "-Wl,-rpath,{{ toolkit_prefix }}/lib64" 
-      - -d " " LDFLAGS "-L{{ toolkit_prefix }}/lib64" 
-      - -d " " LDFLAGS "-Wl,-rpath,{{ cublas_prefix }}/lib64" 
-      - -d " " LDFLAGS "-L{{ cublas_prefix }}/lib64" 
-      - -d " " LDFLAGS "-Wl,-rpath,{{ extras_prefix }}/lib64" 
-      - -d " " LDFLAGS "-L{{ extras_prefix }}/lib64" 
-      - LD_LIBRARY_PATH {{ toolkit_prefix }}/lib64
-      - LD_LIBRARY_PATH {{ cublas_prefix }}/lib64
-      - LD_LIBRARY_PATH {{ extras_prefix }}/lib64
-
+      - PATH {{root}}/bin
+      - MANPATH {{root}}/doc/man
+      - LD_LIBRARY_PATH {{extras_debug_prefix}}
+      - LD_LIBRARY_PATH {{extras_cupti_prefix}}
+      - LD_LIBRARY_PATH {{cublas_prefix}}
+      - LD_LIBRARY_PATH {{nvvm_prefix}}
+      - LD_LIBRARY_PATH {{toolkit_prefix}}
+      - -d " " LDFLAGS "-Wl,-rpath,{{extras_debug_prefix}}/lib64" 
+      - -d " " LDFLAGS "-L{{extras_debug_prefix}}/lib64" 
+      - -d " " LDFLAGS "-Wl,-rpath,{{extras_cupti_prefix}}/lib64" 
+      - -d " " LDFLAGS "-L{{extras_cupti_prefix}}/lib64" 
+      - -d " " LDFLAGS "-Wl,-rpath,{{cublas_prefix}}" 
+      - -d " " LDFLAGS "-L{{cublas_prefix}}" 
+      - -d " " LDFLAGS "-Wl,-rpath,{{nvvm_prefix}}" 
+      - -d " " LDFLAGS "-L{{nvvm_prefix}}" 
+      - -d " " LDFLAGS "-Wl,-rpath,{{toolkit_prefix}}" 
+      - -d " " LDFLAGS "-L{{toolkit_prefix}}" 
   requires:
-    - "{{ basename }}_{{ cuda.shortversion }}"
+    - "{{basename}}_{{cuda.shortversion}}"
     - rcic-module-support
