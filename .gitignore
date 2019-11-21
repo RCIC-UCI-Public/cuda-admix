@@ -1,0 +1,10 @@
+sources/
+BUILD/
+RPMS/
+SOURCES/
+SPECS/
+cache/
+localrepo/
+yamlspecs/tmpbuild/
+yum.*
+*.pkg
