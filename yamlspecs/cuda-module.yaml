@@ -3,7 +3,7 @@
 !include /opt/rcic/include/rcic-module.yaml
 ---
 - package: CUDA Module
-  pkgname: "{{cuda.name}}-module_{{cuda.shortversion}}"
+  pkgname: "{{cuda.name}}_{{cuda.shortversion}}-module"
   category: TOOLS
   toolkit_prefix: "{{root}}/lib64"
   nvvm_prefix: "{{root}}/nvvm/lib64"
