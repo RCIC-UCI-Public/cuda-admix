@@ -2,6 +2,7 @@
 bootstrap:
    - cuda-toolkit
    - cuda-module
+   - cudnn-download
 system:
    - libaio-devel
    - openmpi-devel
