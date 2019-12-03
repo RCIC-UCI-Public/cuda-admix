@@ -19,5 +19,6 @@ build:
    - cuda-driver
 manifest:
    - "{{build}}"
-
-
+   - libcudnn7-7.6.4.38-1.cuda10.1
+   - libcudnn7-devel-7.6.4.38-1.cuda10.1
+   - libcudnn7-doc-7.6.4.38-1.cuda10.1
