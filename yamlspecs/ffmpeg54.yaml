@@ -1,2 +1,4 @@
+## Build the 54 versions of libraries for CUDA
 !include ffmpeg.yaml
-  version: "1.2.12"
+---
+  version: "{{versions.ffmpeg54}}"

@@ -8,8 +8,11 @@ system:
    - openmpi-devel
 build:
    - ffmpeg53
+   - ffmpeg53-module
    - ffmpeg54
+   - ffmpeg54-module
    - ffmpeg
+   - ffmpeg-module
    - cuda-toolkit
    - cuda-module
    - cuda-toolkit-doc
