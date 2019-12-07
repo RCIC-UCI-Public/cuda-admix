@@ -1,6 +1,6 @@
 # Builds the module for ffmpeg.
 !include ffmpeg.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: ffmpeg Module
   pkgname: "{{name}}_{{version}}-module"

@@ -1,6 +1,6 @@
 # Builds the module for cuda.
 !include cuda-toolkit.yaml
-!include /opt/rcic/include/rcic-module.yaml
+!include rcic-module.yaml
 ---
 - package: CUDA Module
   pkgname: "{{cuda.name}}_{{cuda.shortversion}}-module"
