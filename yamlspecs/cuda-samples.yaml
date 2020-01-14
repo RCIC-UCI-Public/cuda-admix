@@ -21,7 +21,7 @@
     makeinstall: >
       mv {{name}}/{{contents}} $(ROOT){{root}}
   requires: 
-    - "{{basename}}_{{version}}"
+    - "{{basename}}_{{cuda.shortversion}}"
   files:
     - "{{root}}/{{contents}}"
   rpm: !include rpm.extras.yaml

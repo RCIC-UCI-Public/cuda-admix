@@ -17,4 +17,4 @@
   files:
     - "{{root}}/*"
   requires:
-    - "{{basename}}_{{version}}"
+    - "{{basename}}_{{cuda.shortversion}}"
