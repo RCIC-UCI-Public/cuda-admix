@@ -11,3 +11,7 @@
       - -d " " LDFLAGS "-Wl,-rpath,{{root}}/lib"
       - -d " " LDFLAGS "-L{{root}}/lib"
       - -d " " CPPFLAGS "-I{{root}}/include"
+    setenv:
+      - FFMPEG_DIR {{root}}
+      - FFMPEG_INC {{root}}/include
+      - FFMPEG_LIB {{root}}/lib
