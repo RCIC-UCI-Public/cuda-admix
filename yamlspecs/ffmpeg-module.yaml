@@ -5,3 +5,9 @@
 - package: ffmpeg Module
   pkgname: "{{name}}_{{version}}-module"
   category: LIBRARIES
+  module:
+    prepend_path:
+      - "{{pkg_defaults.module.prepend_path}}"
+      - -d " " LDFLAGS "-Wl,-rpath,{{root}}/lib"
+      - -d " " LDFLAGS "-L{{root}}/lib"
+      - -d " " CPPFLAGS "-I{{root}}/include"
