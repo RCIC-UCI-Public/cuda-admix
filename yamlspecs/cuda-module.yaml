@@ -16,7 +16,7 @@
   module:
     logname: "cuda/{{cuda.shortversion}}"
     name: "{{cuda.shortversion}}"
-    path: "{{pkg_defaults.module.RCICmpath}}/{{category}}/{{cuda.name}}"
+    path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{cuda.name}}"
     setenv:
       - CUDA_PATH {{root}}
       - CUDA_HOME {{root}}
