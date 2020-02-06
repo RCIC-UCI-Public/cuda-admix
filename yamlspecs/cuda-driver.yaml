@@ -13,7 +13,6 @@
   build:
     configure: echo no configure required 
     pkgmake: echo files extracted during {{basename}} build 
-    modules: None 
   install:
     makeinstall: >
       for x in {{contents}}; do  cp -pR {{extractDir}}/$$x $(ROOT){{root}}; done;

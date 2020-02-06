@@ -24,7 +24,7 @@
       export TMPDIR={{tmpdir}};
       sh {{src_tarball}} --extract={{extractDir}}
     target: 
-    modules: none
+    modules:
   install:
     makeinstall: >
       for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
