@@ -5,6 +5,7 @@
   versions: !include versions.yaml
   version: "{{versions.ffmpeg}}"
   extension: tar.bz2
+  release: 2
   vendor_source: https://ffmpeg.org/releases/ffmpeg-{{version}}.tar.bz2
   description: |
     FFmpeg {{version}}. FFmpeg is the leading multimedia framework, able
