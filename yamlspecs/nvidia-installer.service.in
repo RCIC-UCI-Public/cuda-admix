@@ -1,0 +1,11 @@
+[Unit]
+Description=run the nvidia installer if not already installed
+After=network.target rsyslog.service
+
+[Service]
+Type=oneshot
+ExecStart=%PATH%/installer.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
