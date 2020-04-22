@@ -2,7 +2,7 @@
 ---
 - package: CUDA Driver Run file 
   name: "{{cuda.name}}-driver"
-  release: 2
+  release: 3
   description: >
     CUDA Toolkit Version {{version}} Driver. This is just the
     {{contents}} file put into the {{root}} tree.   

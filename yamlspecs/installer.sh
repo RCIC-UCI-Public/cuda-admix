@@ -4,6 +4,7 @@
 THISDIR=$(dirname $(realpath $0))
 RUNFILE=$(ls $THISDIR/NVIDIA-Linux-x86_64*run)
 NVIDIA_INSTALLER=$(which nvidia-installer 2>/dev/null)
+NVIDIA_SMI=/usr/bin/nvidia-smi
 
 INSTALL_ARGS="--silent  --no-nouveau-check  --no-install-libglvnd"
 
@@ -35,3 +36,8 @@ if [ "$NVIDIA_INSTALLER" == "" ]; then
    chmod +x $RUNFILE
    $RUNFILE $INSTALL_ARGS 2>&1 | tee /var/log/nvidia-installer-run.log
 fi
+
+# Create /dev/nvidia* by running nvidia-smi, if it exists
+if [ -x $NVIDIA_SMI ]; then
+   $NVIDIA_SMI
+fi 
