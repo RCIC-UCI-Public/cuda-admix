@@ -3,14 +3,13 @@
 !include rcic-module.yaml
 ---
 - package: ffmpeg Module
-  pkgname: "{{name}}_{{version}}-module"
   category: LIBRARIES
   module:
     prepend_path:
-      - "{{mod_defaults.prepend_path}}"
-      - "{{mod_defaults.flagspath}}"
+      - *Prepend_path
+      - *Flagspath
     setenv:
-      - "{{mod_defaults.setenv}}"
+      - *Setenv
       - FFMPEG_DIR {{root}}
       - FFMPEG_INC {{root}}/include
       - FFMPEG_LIB {{root}}/lib

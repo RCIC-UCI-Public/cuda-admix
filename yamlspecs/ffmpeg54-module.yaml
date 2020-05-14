@@ -1,5 +1,5 @@
 # Builds the module for ffmpeg54.
-!include ffmpeg-module.yaml
 !include ffmpeg54.yaml
+!include ffmpeg-module.yaml
 ---
-- package: ffmpeg54 Module
+- version: "{{versions.ffmpeg54}}"

@@ -1,0 +1,30 @@
+!include rcic-package.yaml
+---
+- package: CUDA Definitions 
+  basename: cuda-toolkit
+  cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
+  version: "{{cuda.shortversion}}" 
+  vendor_source: http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/{{cuda.src_tarball}}
+  cuda:
+    name: cuda
+    version: "10.1.243_418.87.00"
+    shortversion: "10.1.243"
+    extension: run
+    src_tarball: "{{cuda.name}}_{{cuda.version}}_linux.{{cuda.extension}}"
+  src_tarball:
+  src_dir:
+  no_src_dir: True
+  root: "{{pkg_defaults.app_path}}/{{cuda.name}}/{{cuda.shortversion}}"
+  extractDir: $(REDHAT.BUILD)/cudaExtract
+  build:
+    configure: echo no configure required 
+    pkgmake: echo files extracted during {{basename}} build 
+    target: 
+    modules:
+  install:
+    makeinstall: >
+      for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
+  files:
+    - "{{root}}"
+  requires:
+    - "{{cudabaserpm}}"

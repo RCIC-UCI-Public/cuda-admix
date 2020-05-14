@@ -3,20 +3,15 @@
 !include rcic-module.yaml
 ---
 - package: CUDA Module
-  pkgname: "{{cuda.name}}_{{cuda.shortversion}}-module"
+  name: "{{cuda.name}}"
+  version: "{{cuda.shortversion}}"
   category: TOOLS
   toolkit_prefix: "{{root}}/lib64"
   nvvm_prefix: "{{root}}/nvvm/lib64"
   cublas_prefix: "{{root}}/cublas/lib64"
   extras_cupti_prefix: "{{root}}/extras/CUPTI/lib64"
   extras_debug_prefix: "{{root}}/extras/Debugger/lib64"
-  description: |
-    module file for CUDA toolkit version {{version}}.
-    Environment CUDA_PATH = {{root}}
   module:
-    logname: "cuda/{{cuda.shortversion}}"
-    name: "{{cuda.shortversion}}"
-    path: "{{pkg_defaults.RCICmpath}}/{{category}}/{{cuda.name}}"
     setenv:
       - CUDA_PATH {{root}}
       - CUDA_HOME {{root}}
@@ -39,6 +34,6 @@
       - -d " " LDFLAGS "-L{{nvvm_prefix}}" 
       - -d " " LDFLAGS "-Wl,-rpath,{{toolkit_prefix}}" 
       - -d " " LDFLAGS "-L{{toolkit_prefix}}" 
-  requires:
-    - "{{basename}}_{{cuda.shortversion}}"
-    - rcic-module-support
+    requires:
+      - "{{cudabaserpm}}"
+      - rcic-module-support

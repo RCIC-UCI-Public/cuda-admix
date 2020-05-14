@@ -1,15 +1,13 @@
-!include cuda-toolkit.yaml
+!include cuda-common.yaml
 ---
 - package: CUDA toolkit samples 
   name: "{{basename}}-samples"
   description: >
-    CUDA Toolkit Version {{version}} samples 
+    CUDA Toolkit Version {{cuda.version}} samples 
   contents: cuda-samples 
-  src_tarball: 
   utilities_dir: cuda-samples/1_Utilities
-  utilities:  bandwidthTest deviceQueryDrv topologyQuery deviceQuery   p2pBandwidthLatencyTest UnifiedMemoryPerf
+  utilities: bandwidthTest deviceQueryDrv topologyQuery deviceQuery p2pBandwidthLatencyTest UnifiedMemoryPerf
   build:
-    configure: echo no configure required 
     modules:
       - "{{cuda.name}}/{{cuda.version}}"
     pkgmake: >
@@ -20,8 +18,4 @@
   install:
     makeinstall: >
       mv {{name}}/{{contents}} $(ROOT){{root}}
-  requires: 
-    - "{{basename}}_{{cuda.shortversion}}"
-  files:
-    - "{{root}}/{{contents}}"
   rpm: !include rpm.extras.yaml

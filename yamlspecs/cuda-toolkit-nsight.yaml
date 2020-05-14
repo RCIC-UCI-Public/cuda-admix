@@ -1,15 +1,8 @@
-!include cuda-toolkit.yaml
+!include cuda-common.yaml
 ---
 - package: CUDA toolkit nsight 
   name: "{{basename}}-nsight"
   description: >
-    CUDA Toolkit Version {{version}} nsight Eclipse plugin 
+    CUDA Toolkit Version {{cuda.version}} nsight Eclipse plugin 
   contents: nsightee_plugins libnsight NsightCompute-2019.3 NsightSystems-2019.3
-  src_tarball: 
-  build:
-    configure: echo no configure required 
-    pkgmake: echo files extracted during {{basename}} build 
-  files:
-    - "{{root}}/*"
-  requires: 
-    - "{{basename}}_{{cuda.shortversion}}"
+  rpm: !include rpm.extras.filter.yaml

@@ -1,4 +1,4 @@
-#!include rcic-package.yaml
+!include rcic-package.yaml
 ---
 - package: ffmpeg multimedia framework 
   name: ffmpeg 
@@ -11,7 +11,6 @@
     FFmpeg {{version}}. FFmpeg is the leading multimedia framework, able
     to decode, encode, transcode, mux, demux, stream, filter and play
     pretty much anything that humans and machines have created
-  root: "{{pkg_defaults.app_path}}/{{name}}/{{version}}"
   build:
     configure_args: --enable-shared
     modules: 
