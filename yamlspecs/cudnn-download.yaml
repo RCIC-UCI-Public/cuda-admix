@@ -1,8 +1,9 @@
+!include rcic-package.yaml
 ---
 - package: cuDNN RPM libraries for cuda toolkit
   name: cudnn-download 
   version:  "7.6.4.38"
-  pkgname: "{{name}}"
+  baserpm: "{{name}}"
   src_tar: 
   src_dir: .
   extension:
@@ -18,4 +19,4 @@
        echo {{build.pkgmake}} > $(ROOT){{root}}/{{name}}.sh;
        /usr/bin/cp  $(REDHAT.ROOT)/sources/libcudnn7*rpm $(REDHAT.ROOT)/RPMS/$(ARCH) 
   files:
-    -  "{{root}}/*"
+    -  "{{root}}"
