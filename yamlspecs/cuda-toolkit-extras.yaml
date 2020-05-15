@@ -5,4 +5,6 @@
   description: >
     CUDA Toolkit Version {{cuda.version}} extras
   contents: extras 
+  addfile: 
+    - filter-requires-{{name}}.sh
   rpm: !include rpm.extras.filter.yaml
