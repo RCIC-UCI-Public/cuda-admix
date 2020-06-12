@@ -20,7 +20,7 @@
     configure: echo no configure required 
     pkgmake: echo files extracted during {{basename}} build 
     target: 
-    modules:
+    modules: ""
   install:
     makeinstall: >
       for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
