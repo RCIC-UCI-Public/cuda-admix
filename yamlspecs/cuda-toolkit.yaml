@@ -1,4 +1,5 @@
 !include cuda-common.yaml
+!include rpm.yaml
 ---
 - package: CUDA toolkit
   name: "{{basename}}" 
@@ -20,5 +21,5 @@
   install:
     makeinstall: >
       for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
-  rpm: !include rpm.extras.filter.yaml
   requires: ""
+  rpmFilters: *Requires

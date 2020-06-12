@@ -1,4 +1,5 @@
 !include cuda-common.yaml
+!include rpm.yaml
 ---
 - package: CUDA toolkit documentation
   name: "{{basename}}-extras"
@@ -7,4 +8,4 @@
   contents: extras 
   addfile: 
     - filter-requires-{{name}}.sh
-  rpm: !include rpm.extras.filter.yaml
+  rpmFilters: *Requires
