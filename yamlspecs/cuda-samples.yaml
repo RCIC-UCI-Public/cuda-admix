@@ -19,4 +19,4 @@
   install:
     makeinstall: >
       mv {{name}}/{{contents}} $(ROOT){{root}}
-  rpmFilters: *Requires
+  rpmFilters: *filterRequires

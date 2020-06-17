@@ -22,4 +22,4 @@
     makeinstall: >
       for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
   requires: ""
-  rpmFilters: *Requires
+  rpmFilters: *filterRequires

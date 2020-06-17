@@ -8,4 +8,4 @@
   contents: nsightee_plugins libnsight NsightCompute-2019.3 NsightSystems-2019.3
   addfile: 
     - filter-requires-{{name}}.sh
-  rpmFilters: *Requires
+  rpmFilters: *filterRequires

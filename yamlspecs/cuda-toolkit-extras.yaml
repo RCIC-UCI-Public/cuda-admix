@@ -8,4 +8,4 @@
   contents: extras 
   addfile: 
     - filter-requires-{{name}}.sh
-  rpmFilters: *Requires
+  rpmFilters: *filterRequires
