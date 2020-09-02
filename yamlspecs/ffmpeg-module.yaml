@@ -4,7 +4,7 @@
 ---
 - package: ffmpeg Module
   category: LIBRARIES
-  release: 2
+  release: 3
   module:
     prepend_path:
       - *Prepend_path
