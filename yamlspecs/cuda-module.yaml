@@ -5,7 +5,7 @@
 - package: CUDA Module
   name: "{{cuda.name}}"
   version: "{{cuda.shortversion}}"
-  release: 2
+  release: 3
   category: TOOLS
   toolkit_prefix: "{{root}}/lib64"
   nvvm_prefix: "{{root}}/nvvm/lib64"
@@ -24,7 +24,9 @@
       - LD_LIBRARY_PATH {{cublas_prefix}}
       - LD_LIBRARY_PATH {{nvvm_prefix}}
       - LD_LIBRARY_PATH {{toolkit_prefix}}
+      - LD_LIBRARY_PATH {{toolkit_prefix}}/stubs
       - LD_RUN_PATH {{toolkit_prefix}}
+      - LD_RUN_PATH {{toolkit_prefix}}/stubs
       - -d " " LDFLAGS "-Wl,-rpath,{{extras_debug_prefix}}/lib64" 
       - -d " " LDFLAGS "-L{{extras_debug_prefix}}/lib64" 
       - -d " " LDFLAGS "-Wl,-rpath,{{extras_cupti_prefix}}/lib64" 
@@ -35,6 +37,8 @@
       - -d " " LDFLAGS "-L{{nvvm_prefix}}" 
       - -d " " LDFLAGS "-Wl,-rpath,{{toolkit_prefix}}" 
       - -d " " LDFLAGS "-L{{toolkit_prefix}}" 
+      - -d " " LDFLAGS "-Wl,-rpath,{{toolkit_prefix}}/stubs" 
+      - -d " " LDFLAGS "-L{{toolkit_prefix}}/stubs" 
     requires:
       - "{{cudabaserpm}}"
       - rcic-module-support
