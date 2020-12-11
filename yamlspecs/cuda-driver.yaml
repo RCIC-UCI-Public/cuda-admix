@@ -2,7 +2,6 @@
 ---
 - package: CUDA Driver Run file 
   name: "{{cuda.name}}-driver"
-  release: 3
   description: |
     CUDA Toolkit Version {{cuda.version}} Driver. This is just the
     {{contents}} file put into the {{root}} tree.   
@@ -22,5 +21,5 @@
       mkdir -p $(ROOT)/{{systemd_dir}};
       sed 's@%PATH%@{{root}}@' {{service}}.in > $(ROOT)/{{systemd_dir}}/{{service}}
   files:
-    - "{{root}}"
+    - "{{parent}}"
     - "{{systemd_dir}}/*"

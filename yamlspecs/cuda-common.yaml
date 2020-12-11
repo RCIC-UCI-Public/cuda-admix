@@ -2,6 +2,7 @@
 ---
 - package: CUDA Definitions 
   basename: cuda-toolkit
+  release: 4
   cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
   version: "{{cuda.shortversion}}" 
   vendor_source: http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/{{cuda.src_tarball}}
@@ -25,6 +26,6 @@
     makeinstall: >
       for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
   files:
-    - "{{root}}"
+    - "{{parent}}"
   requires:
     - "{{cudabaserpm}}"
