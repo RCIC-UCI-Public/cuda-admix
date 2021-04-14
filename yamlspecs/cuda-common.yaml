@@ -15,7 +15,8 @@
   src_tarball:
   src_dir:
   no_src_dir: True
-  root: "{{pkg_defaults.app_path}}/{{cuda.name}}/{{cuda.shortversion}}"
+  parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
+  root: "{{parent}}/{{cuda.shortversion}}"
   extractDir: $(REDHAT.BUILD)/cudaExtract
   build:
     configure: echo no configure required 
