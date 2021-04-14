@@ -10,16 +10,14 @@
   addfile: 
     - filter-requires-{{name}}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp
-  contents: bin  EULA.txt  include  lib64 libnvvp nvml share targets version.txt jre nvvm src tools
+  contents: bin  EULA.txt  include  lib64 libnvvp nvml share targets version.txt nvvm src tools
   build:
-    configure: echo no configure required 
     pkgmake: >
       if [ -d {{extractDir}} ]; then /bin/rm -rf {{extractDir}}; fi;
-      mkdir {{tmpdir}}; mkdir {{extractDir}};
+      if [ -d {{tmpdir}} ]; then /bin/rm -rf {{tmpdir}}; fi;
+      mkdir -p {{tmpdir}};
+      mkdir -p {{extractDir}};
       export TMPDIR={{tmpdir}};
       sh {{src_tarball}} --extract={{extractDir}}
-  install:
-    makeinstall: >
-      for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
   requires: ""
   rpmFilters: *filterRequires
