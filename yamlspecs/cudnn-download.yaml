@@ -10,10 +10,6 @@
   description: >
     NVIDIA cuDNN libraries {{version}} RPMs for use with CUDA Toolkit. 
   root: "{{pkg_defaults.app_path}}/etc"
-  build:
-    configure: echo 
-    pkgmake: echo "copy RPMs from google drive"
-    target: 
   install:
      makeinstall: >
        echo {{build.pkgmake}} > $(ROOT){{root}}/{{name}}.sh;

@@ -1,8 +1,7 @@
-# Builds the module for ffmpeg.
 !include ffmpeg.yaml
 !include rcic-module.yaml
 ---
-- package: ffmpeg Module
+- package: ffmpeg module
   category: LIBRARIES
   release: 3
   module:

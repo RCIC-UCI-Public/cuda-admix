@@ -19,5 +19,5 @@
       mkdir -p {{extractDir}};
       export TMPDIR={{tmpdir}};
       sh {{src_tarball}} --extract={{extractDir}}
-  requires: ""
+  requires:
   rpmFilters: *filterRequires

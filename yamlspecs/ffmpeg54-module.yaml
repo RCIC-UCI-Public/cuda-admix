@@ -1,4 +1,4 @@
-# Builds the module for ffmpeg54.
+# module for ffmpeg54
 !include ffmpeg54.yaml
 !include ffmpeg-module.yaml
 ---

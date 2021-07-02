@@ -13,7 +13,5 @@
     pretty much anything that humans and machines have created
   build:
     configure_args: --enable-shared
-    modules: 
-    target: 
   install:
      installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
