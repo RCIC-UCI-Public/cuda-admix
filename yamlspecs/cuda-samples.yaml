@@ -5,12 +5,15 @@
   name: "{{basename}}-samples"
   description: >
     CUDA Toolkit Version {{cuda.version}} samples 
-  contents: cuda-samples 
-  utilities_dir: cuda-samples/1_Utilities
+  contents: samples 
+  utilities_dir: samples/1_Utilities
   utilities: bandwidthTest deviceQueryDrv topologyQuery deviceQuery p2pBandwidthLatencyTest UnifiedMemoryPerf
+  addfile:
+    - filter-requires-{{name}}.sh
+
   build:
     modules:
-      - "{{cuda.name}}/{{cuda.version}}"
+      - "{{cuda.name}}/{{cuda.shortversion}}"
     pkgmake: >
       mkdir {{name}};
       cp -R {{extractDir}}/{{contents}} {{name}};
@@ -19,3 +22,8 @@
   install:
     makeinstall: >
       mv {{name}}/{{contents}} $(ROOT){{root}}
+
+  rpmFilters: *filterRequires
+  requires:
+    - "{{cudabaserpm}}"
+    - "{{basename}}-static-libs_{{cuda.shortversion}}"

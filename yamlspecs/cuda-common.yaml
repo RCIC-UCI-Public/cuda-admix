@@ -1,31 +1,54 @@
 !include rcic-package.yaml
 ---
 - package: CUDA Definitions 
+  
   basename: cuda-toolkit
+  versions: !include versions.yaml
   release: 4
+
+  parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
   cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
   version: "{{cuda.shortversion}}" 
-  vendor_source: http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/{{cuda.src_tarball}}
+  vendor_source: https://developer.download.nvidia.com/compute/cuda/{{cuda.shortversion}}/local_installers/{{cuda.src_tarball}}
+
   cuda:
     name: cuda
-    version: "10.1.243_418.87.00"
-    shortversion: "10.1.243"
+    shortversion: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
+    version: "{{cuda.shortversion}}_{{versions.cuda.fullrelease}}"
+    major: "{{versions.cuda.major}}"
+    minor: "{{versions.cuda.minor}}" 
     extension: run
     src_tarball: "{{cuda.name}}_{{cuda.version}}_linux.{{cuda.extension}}"
+
+
   src_tarball:
   src_dir:
+
+  contents: .
+  listing: "{{extractDir}}/listing"
+  findargs: 
+
   no_src_dir: True
   root: "{{pkg_defaults.app_path}}/{{cuda.name}}/{{cuda.shortversion}}"
   extractDir: $(REDHAT.BUILD)/cudaExtract
+  extractDir2: $(REDHAT.BUILD)/cudaExtract2
   build:
     configure: echo no configure required 
     pkgmake: echo files extracted during {{basename}} build 
     target: 
     modules: ""
+
+  # Find the files that should be in this package and then 
+  # copy to buildroot with cpio passthrough mode
   install:
     makeinstall: >
-      for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
+      pushd {{extractDir}};
+      find {{contents}} {{findArgs}} > {{listing}};
+      if [ ! -d $(ROOT){{root}} ]; then mkdir -p $(ROOT){{root}}; fi; 
+      cpio -p --make-directories $(ROOT){{root}} < {{listing}};
+      popd
   files:
     - "{{parent}}"
   requires:
     - "{{cudabaserpm}}"
+

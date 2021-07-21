@@ -1,6 +1,9 @@
+## This is the CUDA11 version
 ---
+versions: !include versions.yaml
 bootstrap:
    - cuda-toolkit
+   - cuda-toolkit-static-libs
    - cuda-module
    - cudnn-download
 system:
@@ -13,16 +16,12 @@ build:
    - ffmpeg54-module
    - ffmpeg
    - ffmpeg-module
-   - cuda-toolkit
-   - cuda-module
-   - cuda-toolkit-doc
    - cuda-toolkit-nsight
-   - cuda-toolkit-extras
-   - cuda-cublas 
    - cuda-samples
    - cuda-driver
 manifest:
    - "{{build}}"
-   - libcudnn7-7.6.4.38-1.cuda10.1
-   - libcudnn7-devel-7.6.4.38-1.cuda10.1
-   - libcudnn7-doc-7.6.4.38-1.cuda10.1
+   - "{{bootstrap}}"
+   - libcudnn8-{{versions.cudnn8.version}}
+   - libcudnn8-devel-{{versions.cudnn8.version}}
+   - libcudnn8-samples-{{versions.cudnn8.version}}

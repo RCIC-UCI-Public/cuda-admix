@@ -5,7 +5,7 @@
   name: "{{basename}}-extras"
   description: >
     CUDA Toolkit Version {{cuda.version}} extras
-  contents: extras 
+  findArgs: -path ./extras\* 
   addfile: 
     - filter-requires-{{name}}.sh
   rpmFilters: *filterRequires
