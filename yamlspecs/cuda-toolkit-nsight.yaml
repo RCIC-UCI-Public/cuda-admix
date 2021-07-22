@@ -3,6 +3,8 @@
 ---
 - package: CUDA toolkit nsight 
   name: "{{basename}}-nsight"
+  addfile: "filter-requires-{{name}}.sh"
   description: >
     CUDA Toolkit Version {{cuda.version}} nsight Eclipse plugin 
   findArgs: -path ./nsight\* -o -name \*nsight\* 
+  rpmFilters: *filterRequires

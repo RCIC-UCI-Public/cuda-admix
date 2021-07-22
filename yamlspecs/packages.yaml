@@ -9,7 +9,7 @@ bootstrap:
 system:
    - libaio-devel
    - openmpi-devel
-build:
+build_manifest:
    - ffmpeg53
    - ffmpeg53-module
    - ffmpeg54
@@ -18,9 +18,11 @@ build:
    - ffmpeg-module
    - cuda-toolkit-nsight
    - cuda-samples
+build:
+   - "{{build_manifest}}" 
    - cuda-driver
 manifest:
-   - "{{build}}"
+   - "{{build_manifest}}"
    - "{{bootstrap}}"
    - libcudnn8-{{versions.cudnn8.version}}
    - libcudnn8-devel-{{versions.cudnn8.version}}
