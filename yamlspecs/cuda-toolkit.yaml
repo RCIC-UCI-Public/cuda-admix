@@ -3,7 +3,6 @@
 ---
 - package: CUDA toolkit
   name: "{{basename}}" 
-# out for testing
   src_tarball: "{{cuda.src_tarball}}" 
   baserpm: "{{name}}_{{cuda.shortversion}}"
   description: >
@@ -11,19 +10,14 @@
   addfile: 
     - filter-requires-{{name}}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp
-
-  findArgs: -not -path ./samples\* -not -path ./nsight\* -not -name \*nsight\* -not -name \*.a 
-  
+  contents: bin  EULA.txt  include  lib64 libnvvp nvml share targets version.txt nvvm src tools
   build:
-    configure: echo no configure required 
     pkgmake: >
       if [ -d {{extractDir}} ]; then /bin/rm -rf {{extractDir}}; fi;
-      if [ -d {{extractDir2}} ]; then /bin/rm -rf {{extractDir}}; fi;
       if [ -d {{tmpdir}} ]; then /bin/rm -rf {{tmpdir}}; fi;
-      mkdir {{tmpdir}}; mkdir {{extractDir}}; mkdir {{extractDir2}}
+      mkdir -p {{tmpdir}};
+      mkdir -p {{extractDir}};
       export TMPDIR={{tmpdir}};
-      sh {{src_tarball}} --silent --toolkit --samples --installpath={{extractDir}};
-      sh {{src_tarball}} --extract={{extractDir2}}
- 
+      sh {{src_tarball}} --extract={{extractDir}}
   requires: ""
   rpmFilters: *filterRequires

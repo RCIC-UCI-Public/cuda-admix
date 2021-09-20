@@ -3,8 +3,8 @@
 - package: cuDNN RPM libraries for cuda toolkit
   name: cudnn-download 
   versions: !include versions.yaml
-  version:  "{{versions.cudnn8.version}}"
-  release: "{{versions.cudnn8.release}}"
+  version:  "{{versions.cudnn.version}}"
+  release: "{{versions.cudnn.release}}"
   baserpm: "{{name}}"
   src_tar: 
   src_dir: .
@@ -19,6 +19,6 @@
   install:
      makeinstall: >
        echo {{build.pkgmake}} > $(ROOT){{root}}/{{name}}.sh;
-       /usr/bin/cp  $(REDHAT.ROOT)/sources/libcudnn8*{{version}}-{{release}}*rpm $(REDHAT.ROOT)/RPMS/$(ARCH) 
+       /usr/bin/cp  $(REDHAT.ROOT)/sources/{{versions.cudnn.name}}*{{version}}-{{release}}*rpm $(REDHAT.ROOT)/RPMS/$(ARCH) 
   files:
     -  "{{root}}"
