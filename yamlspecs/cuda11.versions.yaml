@@ -1,0 +1,14 @@
+---
+ffmpeg53: "0.10.16"
+ffmpeg54: "1.2.12"
+ffmpeg: "4.1.3" 
+cuda:
+  major: "11"
+  minor: "4"
+  subrelease: "0"
+  fullrelease: "470.42.01"
+  shortversion: "11.4"
+cudnn:
+  name: libcudnn8
+  version: "8.2.2.26"
+  release: "1.cuda11.4"

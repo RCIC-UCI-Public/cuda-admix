@@ -1,0 +1,20 @@
+!include cuda-common.yaml
+---
+  parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
+  root: "{{parent}}/{{cuda.shortversion}}"
+
+  contents: .
+  listing: "{{extractDir}}/listing"
+  findArgs: 
+  extractDir2: $(REDHAT.BUILD)/cudaExtract2
+ 
+  # Find the files that should be in this package and then 
+  # copy to buildroot with cpio passthrough mode
+  install:
+    makeinstall: >
+      pushd {{extractDir}};
+      find {{contents}} {{findArgs}} > {{listing}};
+      if [ ! -d $(ROOT){{root}} ]; then mkdir -p $(ROOT){{root}}; fi; 
+      cpio -p --make-directories $(ROOT){{root}} < {{listing}};
+      popd
+

@@ -1,29 +1,35 @@
-## This is the CUDA11 version
 ---
-versions: !include versions.yaml
+rversions: !include versions.yaml
 bootstrap:
    - cuda-toolkit
-   - cuda-toolkit-static-libs
    - cuda-module
    - cudnn-download
 system:
    - libaio-devel
    - openmpi-devel
-build_manifest:
+build:
    - ffmpeg53
    - ffmpeg53-module
    - ffmpeg54
    - ffmpeg54-module
    - ffmpeg
    - ffmpeg-module
+   - cuda-toolkit-doc
    - cuda-toolkit-nsight
+   - cuda-toolkit-extras
+   - cuda-cublas 
    - cuda-samples
-build:
-   - "{{build_manifest}}" 
    - cuda-driver
+cudnn:
+  name: "{{rversions.cudnn.name}}"
+  version: "{{rversions.cudnn.version}}"
+
 manifest:
-   - "{{build_manifest}}"
+   - "{{build}}"
    - "{{bootstrap}}"
-   - libcudnn8-{{versions.cudnn8.version}}
-   - libcudnn8-devel-{{versions.cudnn8.version}}
-   - libcudnn8-samples-{{versions.cudnn8.version}}
+   - "{{cudnn.name}}-{{cudnn.version}}"
+   - "{{cudnn.name}}-devel-{{cudnn.version}}"
+   - "{{cudnn.name}}-doc-{{cudnn.version}}"
+
+sets:
+   - cuda11
