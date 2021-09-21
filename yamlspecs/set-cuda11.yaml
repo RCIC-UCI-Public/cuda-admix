@@ -14,15 +14,14 @@ build11:
    - cuda11-toolkit-nsight
    - cuda11-samples
 build:
-   - "{{build_common}}"
    - "{{build11}}" 
    - cuda-driver
 cudnn: 
   name: "{{rversions.cudnn.name}}" 
   version: "{{rversions.cudnn.version}}"
 manifest:
-   - "{{build11}}"
    - "{{bootstrap0}}"
+   - "{{build11}}"
    - "{{cudnn.name}}-{{cudnn.version}}"
    - "{{cudnn.name}}-devel-{{cudnn.version}}"
    - "{{cudnn.name}}-samples-{{cudnn.version}}"

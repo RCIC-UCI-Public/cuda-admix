@@ -4,6 +4,7 @@
 - package: CUDA toolkit
 
   findArgs: -not -path ./samples\* -not -path ./nsight\* -not -name \*nsight\* -not -name \*.a 
+  src_tarball: "{{cuda.src_tarball}}"
   
   build:
     configure: echo no configure required 

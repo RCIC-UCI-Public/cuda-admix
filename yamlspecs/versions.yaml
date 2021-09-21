@@ -6,7 +6,7 @@ cuda:
   major: "10"
   minor: "1"
   subrelease: "243"
-  fullrelease: "418.87.0"
+  fullrelease: "418.87.00"
 cudnn:
   name: "libcudnn7"
   version: "7.6.4.38"

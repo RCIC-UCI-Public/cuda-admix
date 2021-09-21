@@ -7,23 +7,19 @@ bootstrap:
 system:
    - libaio-devel
    - openmpi-devel
-build_common:
+build:
    - ffmpeg53
    - ffmpeg53-module
    - ffmpeg54
    - ffmpeg54-module
    - ffmpeg
    - ffmpeg-module
-build10:
    - cuda-toolkit-doc
    - cuda-toolkit-nsight
    - cuda-toolkit-extras
    - cuda-cublas 
    - cuda-samples
    - cuda-driver
-build:
-   - "{{build_common}}"
-   - "{{build10}}"
 cudnn:
   name: "{{rversions.cudnn.name}}"
   version: "{{rversions.cudnn.version}}"
