@@ -2,17 +2,23 @@
 ---
 - package: cuDNN RPM libraries for cuda toolkit
   name: cudnn-download 
-  version:  "7.6.4.38"
-  baserpm: "{{name}}"
+  versions: !include versions.yaml
+  version:  "{{versions.cudnn.version}}"
+  release: "{{versions.cudnn.release}}"
   src_tar: 
   src_dir: .
   extension:
   description: >
     NVIDIA cuDNN libraries {{version}} RPMs for use with CUDA Toolkit. 
-  root: "{{pkg_defaults.app_path}}/etc"
+  build:
+    configure: echo 
+    configure_args: 
+    pkgmake: echo 'copied RPMs from google drive'
+    target: 
   install:
      makeinstall: >
-       echo {{build.pkgmake}} > $(ROOT){{root}}/{{name}}.sh;
-       /usr/bin/cp  $(REDHAT.ROOT)/sources/libcudnn7*rpm $(REDHAT.ROOT)/RPMS/$(ARCH) 
+       {{build.pkgmake}} > $(ROOT){{root}}/{{name}}.sh;
+       find $(REDHAT.ROOT)/sources -name {{versions.cudnn.name}}\*{{version}}-{{release}}\*rpm >> $(ROOT){{root}}/{{name}}.sh;
+       /usr/bin/cp  $(REDHAT.ROOT)/sources/{{versions.cudnn.name}}*{{version}}-{{release}}*rpm $(REDHAT.ROOT)/RPMS/$(ARCH) 
   files:
     -  "{{root}}"

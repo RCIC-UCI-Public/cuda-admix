@@ -5,3 +5,7 @@ a7542ccbdd4081e17805623cd60268e9b3fd9243  sources/ffmpeg-4.1.3.tar.bz2 1tfeszRdt
 c3b6728401b493b6ceb30aaf14dacd0c1ba659ec  sources/libcudnn7-7.6.4.38-1.cuda10.1.x86_64.rpm 1BnT1KhpyesCc6lCqqpSS79iV3Ug8RofN
 9dfd90e200339a693ba414990a01d0449d262685  sources/libcudnn7-devel-7.6.4.38-1.cuda10.1.x86_64.rpm 1YNlmvVXH8ZHsKt7ALX-MgPMev858H_dt
 2c6a3c7c487022a41f13ce968d197546fc98a0cc  sources/libcudnn7-doc-7.6.4.38-1.cuda10.1.x86_64.rpm 1RqXx8xmVElfdKedNLr0pKqxbBJMJwbCm
+caf39bc6a129cab22da58c487b5444dd3f4cf92c  sources/libcudnn8-8.2.2.26-1.cuda11.4.x86_64.rpm 1sma9gUH5C3Jh1r7bzcC_kNYaZ9MKClpu
+197bc278c3a2b552b51eaee93d8808de953f85da  sources/libcudnn8-devel-8.2.2.26-1.cuda11.4.x86_64.rpm 15KNd-h2SmcQnOy6Tkc9oz8cJMKmjwliI
+e873599a2a809af1ca7eb734b734e598ee7867aa  sources/libcudnn8-samples-8.2.2.26-1.cuda11.4.x86_64.rpm 134Nn6EwPjfzNc8CG1mwN7RSh4GkejBD4
+e78ce10dea1d8603fdf7b6a74ab2b836de405529  sources/cuda_11.4.0_470.42.01_linux.run 1grqhvtoFJ2PjxyQpxfDXRGFxQXtcf6fh

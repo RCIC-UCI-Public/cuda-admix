@@ -5,21 +5,23 @@
   description: |
     CUDA Toolkit Version {{cuda.version}} Driver. This is just the
     {{contents}} file put into the {{root}} tree.   
-  contents: NVIDIA-Linux-x86_64-418.87.00.run 
+  contents: NVIDIA-Linux-*run 
   cmdfile: disable-nouveau.yml 
   systemd_dir: /etc/systemd/system
+  service_in: nvidia-installer.service.in
   service: nvidia-installer.service
   addfile:
     - "{{cmdfile}}" 
     - installer.sh
-    - "{{service}}.in"
+    - "{{service_in}}"
   install:
     makeinstall: >
-      for x in {{contents}}; do  cp -pR {{extractDir}}/$$x $(ROOT){{root}}; done;
+      for x in {{contents}}; do  cp -pR {{extractDir2}}/$$x $(ROOT){{root}}; done;
       $(INSTALL) {{cmdfile}} $(ROOT)/{{root}};
       $(INSTALL) -m 500 installer.sh $(ROOT)/{{root}};
+      sed -i 's/%VERSION%/{{version}}/' $(ROOT)/{{root}}/installer.sh;
       mkdir -p $(ROOT)/{{systemd_dir}};
-      sed 's@%PATH%@{{root}}@' {{service}}.in > $(ROOT)/{{systemd_dir}}/{{service}}
+      sed 's@%PATH%@{{root}}@' {{service_in}} > $(ROOT)/{{systemd_dir}}/{{service}}
   files:
     - "{{parent}}"
     - "{{systemd_dir}}/*"

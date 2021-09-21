@@ -1,0 +1,8 @@
+!include cuda11-common.yaml
+---
+- package: CUDA toolkit static libs 
+  name: "{{basename}}-static-libs"
+  baserpm: "{{name}}"
+  description: >
+    CUDA Toolkit Version {{cuda.version}} static libraries  
+  findArgs: -not -path ./nsight\* -not -name \*nsight\* -not -path ./extras\* -not -path ./samples\* -name \*.a
