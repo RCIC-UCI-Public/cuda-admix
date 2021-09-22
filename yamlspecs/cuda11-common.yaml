@@ -11,10 +11,11 @@
   # Find the files that should be in this package and then 
   # copy to buildroot with cpio passthrough mode
   install:
+    extra:
     makeinstall: >
       pushd {{extractDir}};
       find {{contents}} {{findArgs}} > {{listing}};
       if [ ! -d $(ROOT){{root}} ]; then mkdir -p $(ROOT){{root}}; fi; 
       cpio -p --make-directories $(ROOT){{root}} < {{listing}};
-      popd
+      popd {{install.extra}}
 
