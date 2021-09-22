@@ -6,15 +6,16 @@
   description: >
     CUDA Toolkit Version {{cuda.version}} samples 
   contents: cuda-samples 
-  utilities_dir: cuda-samples/1_Utilities
+  
+  utilities_dir: 1_Utilities
   utilities: bandwidthTest deviceQueryDrv topologyQuery deviceQuery p2pBandwidthLatencyTest UnifiedMemoryPerf
   build:
     modules:
-      - "{{cuda.name}}/{{cuda.version}}"
+      - "{{cuda.name}}/{{cuda.shortversion}}"
     pkgmake: >
       mkdir {{name}};
       cp -R {{extractDir}}/{{contents}} {{name}};
-      cd {{name}}/{{utilities_dir}};
+      cd {{name}}/{{contents}}/{{utilities_dir}};
       for p in {{utilities}}; do (cd $$p; make; /bin/rm $$p); done
   install:
     makeinstall: >
