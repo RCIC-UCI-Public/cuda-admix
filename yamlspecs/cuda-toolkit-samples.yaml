@@ -3,10 +3,8 @@
 ---
 - package: CUDA toolkit samples 
   name: "{{basename}}-samples"
-  description: >
-    CUDA Toolkit Version {{cuda.version}} samples 
+  description_add: cuda samples
   contents: cuda-samples 
-  
   utilities_dir: 1_Utilities
   utilities: bandwidthTest deviceQueryDrv topologyQuery deviceQuery p2pBandwidthLatencyTest UnifiedMemoryPerf
   build:

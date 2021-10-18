@@ -3,8 +3,7 @@
 ---
 - package: CUDA toolkit documentation
   name: "{{basename}}-extras"
-  description: >
-    CUDA Toolkit Version {{cuda.version}} extras
+  description_add: CUDA extras
   contents: extras 
   addfile: 
     - filter-requires-{{name}}.sh

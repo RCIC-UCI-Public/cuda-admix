@@ -3,8 +3,7 @@
 ---
 - package: CUDA toolkit nsight 
   name: "{{basename}}-nsight"
-  description: >
-    CUDA Toolkit Version {{cuda.version}} nsight Eclipse plugin 
+  description_add: CUDA nsight Eclipse plugin 
   contents: nsightee_plugins libnsight NsightCompute-2019.3 NsightSystems-2019.3
   addfile: 
     - filter-requires-{{name}}.sh
