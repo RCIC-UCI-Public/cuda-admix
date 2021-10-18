@@ -2,6 +2,5 @@
 ---
 - package: CUDA toolkit documentation
   name: "{{basename}}-doc"
-  description: >
-    CUDA Toolkit Version {{cuda.version}} Documentation
+  description_add: CUDA documentation
   contents: doc 
