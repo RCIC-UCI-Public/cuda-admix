@@ -1,0 +1,10 @@
+!include cuda-driver.yaml
+!include cuda11-common.yaml
+---
+- contents: NVIDIA-Linux-*run 
+  install:
+    makeinstall: "{{install.driver_install}}"
+  files:
+    - "{{parent}}"
+    - "{{systemd_dir}}/*"
+  conflicts: "{{name}}_{{versions.cuda.conflicts}}"

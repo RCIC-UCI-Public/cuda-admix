@@ -2,9 +2,7 @@
 ---
 - package: CUDA Driver Run file 
   name: "{{cuda.name}}-driver"
-  description: |
-    CUDA Toolkit Version {{cuda.version}} Driver. This is just the
-    {{contents}} file put into the {{root}} tree.   
+  description_add: NVIDIA driver installer files file into the {{root}} tree
   contents: NVIDIA-Linux-*run 
   cmdfile: disable-nouveau.yml 
   systemd_dir: /etc/systemd/system
@@ -15,7 +13,8 @@
     - installer.sh
     - "{{service_in}}"
   install:
-    makeinstall: >
+    makeinstall: "{{install.driver_install}}"
+    driver_install: >
       for x in {{contents}}; do  cp -pR {{extractDir2}}/$$x $(ROOT){{root}}; done;
       $(INSTALL) {{cmdfile}} $(ROOT)/{{root}};
       $(INSTALL) -m 500 installer.sh $(ROOT)/{{root}};
@@ -25,3 +24,4 @@
   files:
     - "{{parent}}"
     - "{{systemd_dir}}/*"
+  conflicts: "{{name}}_{{versions.cuda.conflicts}}"
