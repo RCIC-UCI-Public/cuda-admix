@@ -1,9 +1,8 @@
 !include cuda-common.yaml
 ---
 - package: CUDA Cublas 
-  name: "cuda-cublas"
-  description: >
-    CUDA CUBLAS {{cuda.version}} 
+  name: "{{basename}}-cublas"
+  description_add: CUDA CUBLAS 
   contents: cublas
   install:
     makeinstall: >
