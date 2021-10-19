@@ -6,8 +6,9 @@ cuda:
   major: "11"
   minor: "4"
   subrelease: "0"
-  fullrelease: "470.42.01"
+  driver: "470.42.01"
   shortversion: "11.4"
+  conflicts: "10.1.243"
 cudnn:
   name: libcudnn8
   version: "8.2.2.26"
