@@ -3,30 +3,37 @@
 - package: CUDA Definitions 
   basename: cuda-toolkit
   release: 4
-  cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
+  cudabaserpm: "{{basename}}_{{cuda.version}}"
   versions: !include versions.yaml
-  version: "{{cuda.shortversion}}" 
-  vendor_source: http://developer.download.nvidia.com/compute/{{cuda.shortversion}}/10.1/Prod/local_installers/{{cuda.src_tarball}}
+  version: "{{cuda.version}}" 
+  vendor_source: http://developer.download.nvidia.com/compute/{{cuda.version}}/{{cuda.shortversion}}/Prod/local_installers/{{cuda.src_tarball}}
   cuda:
     name: cuda
-    shortversion: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
-    version: "{{cuda.shortversion}}_{{versions.cuda.fullrelease}}"
     major: "{{versions.cuda.major}}"
     minor: "{{versions.cuda.minor}}" 
+    shortversion: "{{versions.cuda.major}}.{{versions.cuda.minor}}"
+    version: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
+    driver: "{{versions.cuda.driver}}"
     extension: run
-    src_tarball: "{{cuda.name}}_{{cuda.version}}_linux.{{cuda.extension}}"
+    src_tarball: "{{cuda.name}}_{{cuda.version}}_{{cuda.driver}}_linux.{{cuda.extension}}"
   src_tarball:
   src_dir:
   no_src_dir: True
+  description_add:
+  description: |
+    CUDA Toolkit Version {{cuda.version}}.
+    Provides {{description_add}}
   parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
-  root: "{{parent}}/{{cuda.shortversion}}"
-  extractDir: $(REDHAT.BUILD)/cudaExtract
+  root: "{{parent}}/{{cuda.version}}"
+  extractDir: $(REDHAT.BUILD)/cudaExtract_{{cuda.major}}
   extractDir2: "{{extractDir}}" 
   build:
     configure: echo no configure required 
+    configure_args: 
     pkgmake: echo files extracted during {{basename}} build 
     target: 
-    modules: ""
+    modules:
+  contents:
   install:
     makeinstall: >
       for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
