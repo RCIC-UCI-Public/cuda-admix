@@ -4,7 +4,6 @@
 ---
 - package: CUDA module
   name: "{{cuda.name}}"
-  version: "{{cuda.shortversion}}"
   release: 3
   category: TOOLS
   toolkit_prefix: "{{root}}/lib64"
