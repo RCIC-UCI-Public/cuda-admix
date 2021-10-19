@@ -1,24 +1,14 @@
-!include cuda-samples.yaml
+!include cuda-toolkit-samples.yaml
 !include cuda11-common.yaml 
 ---
-- package: CUDA toolkit samples 
-  contents: samples 
+- contents: samples 
   addfile:
     - filter-requires-{{name}}.sh
-
-  build:
-    modules:
-      - "{{cuda.name}}/{{cuda.shortversion}}"
-
   install:
     extra: >
       ; cd $(ROOT){{root}}/{{contents}}/{{utilities_dir}};  
       for p in {{utilities}}; do (cd $$p; make; /bin/rm $$p); done
-
   rpmFilters: *filterRequires
-
   requires:
     - "{{cudabaserpm}}"
     - "{{basename}}-static-libs_{{cuda.shortversion}}"
-
-
