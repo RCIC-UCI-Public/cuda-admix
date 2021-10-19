@@ -1,35 +1,33 @@
 ---
-rversions: !include versions.yaml
 bootstrap:
-   - cuda-toolkit
-   - cuda-module
-   - cudnn-download
+  - cuda-toolkit
+  - cuda-module
+  - cudnn-download
 system:
-   - libaio-devel
-   - openmpi-devel
+  - libaio-devel
+  - openmpi-devel
+ffmpeg_build:
+  - ffmpeg53
+  - ffmpeg53-module
+  - ffmpeg54
+  - ffmpeg54-module
+  - ffmpeg
+  - ffmpeg-module
 build:
-   - ffmpeg53
-   - ffmpeg53-module
-   - ffmpeg54
-   - ffmpeg54-module
-   - ffmpeg
-   - ffmpeg-module
-   - cuda-toolkit-doc
-   - cuda-toolkit-nsight
-   - cuda-toolkit-extras
-   - cuda-cublas 
-   - cuda-samples
-   - cuda-driver
+  - "{{ffmpeg_build}}"
+  - cuda-toolkit-doc
+  - cuda-toolkit-nsight
+  - cuda-toolkit-extras
+  - cuda-toolkit-cublas 
+  - cuda-toolkit-samples
+  - cuda-driver
 cudnn:
-  name: "{{rversions.cudnn.name}}"
-  version: "{{rversions.cudnn.version}}"
-
+  - libcudnn7
+  - libcudnn7-devel
+  - libcudnn-7-doc
 manifest:
-   - "{{build}}"
-   - "{{bootstrap}}"
-   - "{{cudnn.name}}-{{cudnn.version}}"
-   - "{{cudnn.name}}-devel-{{cudnn.version}}"
-   - "{{cudnn.name}}-doc-{{cudnn.version}}"
-
+  - "{{bootstrap}}"
+  - "{{build}}"
+  - "{{cudnn}}"
 sets:
-   - cuda11
+  - cuda11
