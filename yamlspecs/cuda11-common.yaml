@@ -2,11 +2,10 @@
 ---
   parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
   root: "{{parent}}/{{cuda.shortversion}}"
-
   contents: .
   listing: "{{extractDir}}/listing"
   findArgs: 
-  extractDir2: $(REDHAT.BUILD)/cudaExtract2
+  extractDir2: $(REDHAT.BUILD)/cudaExtract2_{{cuda.major}}
  
   # Find the files that should be in this package and then 
   # copy to buildroot with cpio passthrough mode
@@ -18,4 +17,3 @@
       if [ ! -d $(ROOT){{root}} ]; then mkdir -p $(ROOT){{root}}; fi; 
       cpio -p --make-directories $(ROOT){{root}} < {{listing}};
       popd {{install.extra}}
-
