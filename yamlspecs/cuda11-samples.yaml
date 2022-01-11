@@ -13,9 +13,9 @@
   install:
     extra: >
       ; cd $(ROOT){{root}}/{{contents}}/{{utilities_dir}};  
-      for p in {{utilities}}; do (cd $$p; make; /bin/rm $$p); done
+      export LDFLAGS=''; for p in {{utilities}}; do (cd $$p; make; /bin/rm $$p); done
 
-  rpmFilters: *filterRequires
+  rpmFilters: *filterRequires 
 
   requires:
     - "{{cudabaserpm}}"
