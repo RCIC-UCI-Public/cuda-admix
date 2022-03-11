@@ -14,7 +14,6 @@
   build:
     configure: ./configure
     configure_args: --enable-shared --prefix={{root}}
-    modules: 
-    target: 
+    pkgmake:  unset MAKEFLAGS; make
   install:
      installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 
