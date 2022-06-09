@@ -1,0 +1,27 @@
+## This is the CUDA11 version
+!include packages.yaml
+---
+versions: versions-cuda11.yaml
+rversions: !include versions-cuda11.yaml
+bootstrap0:
+   - cuda11-toolkit
+   - cuda11-toolkit-static-libs
+   - cuda-module
+bootstrap:
+   - "{{bootstrap0}}"
+   - cudnn-download
+build11:
+   - cuda11-toolkit-nsight
+   - cuda11-samples
+build:
+   - "{{build11}}" 
+   - cuda-driver
+cudnn: 
+  name: "{{rversions.cudnn.name}}" 
+  version: "{{rversions.cudnn.version}}"
+manifest:
+   - "{{bootstrap0}}"
+   - "{{build11}}"
+   - "{{cudnn.name}}-{{cudnn.version}}"
+   - "{{cudnn.name}}-devel-{{cudnn.version}}"
+   - "{{cudnn.name}}-samples-{{cudnn.version}}"

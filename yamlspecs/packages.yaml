@@ -1,4 +1,5 @@
 ---
+rversions: !include versions.yaml
 bootstrap:
    - cuda-toolkit
    - cuda-module
@@ -13,16 +14,22 @@ build:
    - ffmpeg54-module
    - ffmpeg
    - ffmpeg-module
-   - cuda-toolkit
-   - cuda-module
    - cuda-toolkit-doc
    - cuda-toolkit-nsight
    - cuda-toolkit-extras
    - cuda-cublas 
    - cuda-samples
    - cuda-driver
+cudnn:
+  name: "{{rversions.cudnn.name}}"
+  version: "{{rversions.cudnn.version}}"
+
 manifest:
    - "{{build}}"
-   - libcudnn7-7.6.4.38-1.cuda10.1
-   - libcudnn7-devel-7.6.4.38-1.cuda10.1
-   - libcudnn7-doc-7.6.4.38-1.cuda10.1
+   - "{{bootstrap}}"
+   - "{{cudnn.name}}-{{cudnn.version}}"
+   - "{{cudnn.name}}-devel-{{cudnn.version}}"
+   - "{{cudnn.name}}-doc-{{cudnn.version}}"
+
+sets:
+   - cuda11

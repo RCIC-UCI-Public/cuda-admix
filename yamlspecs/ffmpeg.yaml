@@ -12,8 +12,8 @@
     to decode, encode, transcode, mux, demux, stream, filter and play
     pretty much anything that humans and machines have created
   build:
-    configure_args: --enable-shared
-    modules: 
-    target: 
+    configure: ./configure
+    configure_args: --enable-shared --prefix={{root}}
+    pkgmake:  unset MAKEFLAGS; make
   install:
      installextra: $(INSTALL) -m 644  README* COPYING AUTHORS $(ROOT){{root}} 

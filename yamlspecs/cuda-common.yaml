@@ -4,12 +4,15 @@
   basename: cuda-toolkit
   release: 4
   cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
+  versions: !include versions.yaml
   version: "{{cuda.shortversion}}" 
-  vendor_source: http://developer.download.nvidia.com/compute/cuda/10.1/Prod/local_installers/{{cuda.src_tarball}}
+  vendor_source: http://developer.download.nvidia.com/compute/{{cuda.shortversion}}/10.1/Prod/local_installers/{{cuda.src_tarball}}
   cuda:
     name: cuda
-    version: "10.1.243_418.87.00"
-    shortversion: "10.1.243"
+    shortversion: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
+    version: "{{cuda.shortversion}}_{{versions.cuda.fullrelease}}"
+    major: "{{versions.cuda.major}}"
+    minor: "{{versions.cuda.minor}}" 
     extension: run
     src_tarball: "{{cuda.name}}_{{cuda.version}}_linux.{{cuda.extension}}"
   src_tarball:
@@ -18,6 +21,7 @@
   parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
   root: "{{parent}}/{{cuda.shortversion}}"
   extractDir: $(REDHAT.BUILD)/cudaExtract
+  extractDir2: "{{extractDir}}" 
   build:
     configure: echo no configure required 
     pkgmake: echo files extracted during {{basename}} build 

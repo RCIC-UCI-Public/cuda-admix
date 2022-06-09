@@ -1,0 +1,6 @@
+!include cuda-toolkit-nsight.yaml
+!include cuda11-common.yaml
+---
+- package: CUDA toolkit nsight 
+  findArgs: -path ./nsight\* -o -name \*nsight\* 
+  rpmFilters: *filterRequires
