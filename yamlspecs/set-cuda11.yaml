@@ -13,7 +13,6 @@ bootstrap:
 build11:
    - cuda11-toolkit-nsight
    - cuda11-samples
-   - cuda11-driver
 build:
    - "{{build11}}" 
 cudnn: 
