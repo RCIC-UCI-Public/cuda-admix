@@ -33,3 +33,4 @@ manifest:
 
 sets:
    - cuda11
+   - cuda-driver
