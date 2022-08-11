@@ -4,3 +4,4 @@
 - package: CUDA toolkit nsight 
   findArgs: -path ./nsight\* -o -name \*nsight\* 
   rpmFilters: *filterRequires
+  rpmBuildIdLinks: none

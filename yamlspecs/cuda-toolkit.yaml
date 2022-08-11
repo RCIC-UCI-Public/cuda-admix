@@ -21,3 +21,4 @@
       sh {{src_tarball}} --extract={{extractDir}}
   requires: ""
   rpmFilters: *filterRequires
+  rpmBuildIdLinks: none
