@@ -1,0 +1,13 @@
+## This is the CUDA11 version
+!include set-cuda11.yaml
+---
+versions: versions-latest.yaml
+rversions: !include versions-latest.yaml
+build11:
+   - cuda11-toolkit-nsight
+manifest:
+   - "{{bootstrap0}}"
+   - "{{build11}}"
+   - "{{cudnn.name}}-{{cudnn.version}}"
+   - "{{cudnn.name}}-devel-{{cudnn.version}}"
+   - "{{cudnn.name}}-samples-{{cudnn.version}}"

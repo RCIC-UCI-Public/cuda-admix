@@ -1,0 +1,11 @@
+---
+cuda:
+  major: "11"
+  minor: "7"
+  subrelease: "1"
+  fullrelease: "515.65.01"
+  shortversion: "11.7"
+cudnn:
+  name: libcudnn8
+  version: "8.5.0.96"
+  release: "1.cuda11.7"

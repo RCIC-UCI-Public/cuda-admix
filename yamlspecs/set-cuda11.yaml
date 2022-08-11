@@ -21,6 +21,3 @@ cudnn:
 manifest:
    - "{{bootstrap0}}"
    - "{{build11}}"
-   - "{{cudnn.name}}-{{cudnn.version}}"
-   - "{{cudnn.name}}-devel-{{cudnn.version}}"
-   - "{{cudnn.name}}-samples-{{cudnn.version}}"

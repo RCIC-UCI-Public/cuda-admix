@@ -19,7 +19,7 @@ build:
    - cuda-toolkit-extras
    - cuda-cublas 
    - cuda-samples
-   - cuda-driver
+     #   - cuda-driver
 cudnn:
   name: "{{rversions.cudnn.name}}"
   version: "{{rversions.cudnn.version}}"
@@ -33,4 +33,5 @@ manifest:
 
 sets:
    - cuda11
+   - latest
    - cuda-driver
