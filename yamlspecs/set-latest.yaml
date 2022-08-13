@@ -5,6 +5,7 @@ versions: versions-latest.yaml
 rversions: !include versions-latest.yaml
 build11:
    - cuda11-toolkit-nsight
+   - cuda11-driver
 manifest:
    - "{{bootstrap0}}"
    - "{{build11}}"
