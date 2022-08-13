@@ -24,3 +24,4 @@
   files:
     - "{{parent}}"
     - "{{systemd_dir}}/*"
+  requires:
