@@ -10,9 +10,7 @@
     configure: echo no configure required 
     pkgmake: >
       if [ -d {{extractDir}} ]; then /bin/rm -rf {{extractDir}}; fi;
-      if [ -d {{extractDir2}} ]; then /bin/rm -rf {{extractDir2}}; fi;
       if [ -d {{tmpdir}} ]; then /bin/rm -rf {{tmpdir}}; fi;
-      mkdir {{tmpdir}}; mkdir {{extractDir}}; mkdir {{extractDir2}}
+      mkdir {{tmpdir}}; mkdir {{extractDir}};
       export TMPDIR={{tmpdir}};
-      sh {{src_tarball}} --silent --toolkit --samples --installpath={{extractDir}};
-      sh {{src_tarball}} --extract={{extractDir2}}
+      sh {{src_tarball}} --silent --toolkit --samples --installpath={{extractDir}}

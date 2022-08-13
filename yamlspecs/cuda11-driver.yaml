@@ -1,2 +1,8 @@
 !include cuda11-common.yaml
 !include cuda-driver-common.yaml
+---
+  build:
+    pkgmake: >
+      if [ -d {{extractDir2}} ]; then /bin/rm -rf {{extractDir2}}; fi;
+      mkdir {{extractDir2}}
+      sh {{src_tarball}} --extract={{extractDir2}}
