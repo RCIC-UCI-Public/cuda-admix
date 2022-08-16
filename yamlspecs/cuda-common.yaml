@@ -2,7 +2,7 @@
 ---
 - package: CUDA Definitions 
   basename: cuda-toolkit
-  release: 4
+  release: 5
   cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
   versions: !include versions.yaml
   version: "{{cuda.shortversion}}" 
