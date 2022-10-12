@@ -5,7 +5,7 @@
 - package: CUDA module
   name: "{{cuda.name}}"
   version: "{{cuda.shortversion}}"
-  release: 4
+  release: 5
   category: TOOLS
   toolkit_prefix: "{{root}}/lib64"
   nvvm_prefix: "{{root}}/nvvm/lib64"
@@ -24,9 +24,9 @@
       - LD_LIBRARY_PATH {{cublas_prefix}}
       - LD_LIBRARY_PATH {{nvvm_prefix}}
       - LD_LIBRARY_PATH {{toolkit_prefix}}
-      - LD_LIBRARY_PATH {{toolkit_prefix}}/stubs
+#     - LD_LIBRARY_PATH {{toolkit_prefix}}/stubs
       - LD_RUN_PATH {{toolkit_prefix}}
-      - LD_RUN_PATH {{toolkit_prefix}}/stubs
+#     - LD_RUN_PATH {{toolkit_prefix}}/stubs
       - -d " " LDFLAGS "-Wl,-rpath,{{extras_debug_prefix}}"
       - -d " " LDFLAGS "-L{{extras_debug_prefix}}"
       - -d " " LDFLAGS "-Wl,-rpath,{{extras_cupti_prefix}}"
