@@ -6,6 +6,7 @@ KVERSION=$(uname -r)
 THISDIR=$(dirname $(realpath $0))
 RUNFILE=$(ls $THISDIR/NVIDIA-Linux-x86_64*run)
 NVIDIA_SMI=/usr/bin/nvidia-smi
+NVIDIA_SMI_ARGS="--persistence-mode=1"
 INSTALLED_VERSION=/etc/nvidia-driver-version
 INSTALL_ARGS="--silent  --no-nouveau-check  --no-install-libglvnd"
 
@@ -69,5 +70,5 @@ fi
 
 # Create /dev/nvidia* by running nvidia-smi, if it exists
 if [ -x $NVIDIA_SMI ]; then
-   $NVIDIA_SMI
+   $NVIDIA_SMI $NVIDIA_SMI_ARGS
 fi 
