@@ -1,0 +1,26 @@
+!include rcic-package.yaml
+!include rpm.yaml
+---
+- name: pycuda 
+  versions: !include versions.yaml
+  version: "{{versions.pycuda}}"
+  cuda_version: "{{versions.site.cuda.version}}"
+  python_version: "{{versions.site.python3}}"
+  python_major: "{{versions.site.python3_major}}"
+  compiler: "{{versions.site.compiler.name}}"
+  compiler_version: "{{versions.site.compiler.version}}"
+  pkgname: "python_{{python_version}}-{{name}}"
+  parent: "{{root}}"
+  root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
+  build:
+    configure: ./configure.py
+    configure_args: 
+    modules: 
+      - "python/{{python_version}}"
+      - "{{compiler}}/{{compiler_version}}"
+      - cuda/{{cuda_version}}
+  install:
+    makeinstall: python{{python_major}} setup.py install --root $(ROOT) --prefix {{root}}
+  requires:
+    - python_{{python_version}}
+    - cuda-toolkit_{{cuda_version}}
