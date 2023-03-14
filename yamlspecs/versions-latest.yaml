@@ -1,4 +1,6 @@
+!include versions.yaml
 ---
+site: !include updates8.yaml
 cuda:
   major: "11"
   minor: "7"
