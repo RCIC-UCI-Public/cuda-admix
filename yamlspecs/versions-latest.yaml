@@ -1,6 +1,5 @@
-!include versions.yaml
+!include updates8.yaml
 ---
-site: !include updates8.yaml
 cuda:
   major: "11"
   minor: "7"
@@ -11,3 +10,4 @@ cudnn:
   name: libcudnn8
   version: "8.5.0.96"
   release: "1.cuda11.7"
+pycuda: "2022.1"
