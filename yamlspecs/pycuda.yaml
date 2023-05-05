@@ -4,11 +4,11 @@
 - name: pycuda 
   versions: !include versions.yaml
   version: "{{versions.pycuda}}"
-  cuda_version: "{{versions.site.cuda.version}}"
-  python_version: "{{versions.site.python3}}"
-  python_major: "{{versions.site.python3_major}}"
-  compiler: "{{versions.site.compiler.name}}"
-  compiler_version: "{{versions.site.compiler.version}}"
+  cuda_version: "{{versions.cuda.version}}"
+  python_version: "{{versions.python3}}"
+  python_major: "{{versions.python3_major}}"
+  compiler: "{{versions.compiler.name}}"
+  compiler_version: "{{versions.compiler.version}}"
   pkgname: "python_{{python_version}}-{{name}}"
   parent: "{{root}}"
   root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
