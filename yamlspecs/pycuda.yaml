@@ -2,6 +2,7 @@
 !include rpm.yaml
 ---
 - name: pycuda 
+  release: 4
   versions: !include versions.yaml
   version: "{{versions.pycuda}}"
   cuda_version: "{{versions.cuda.version}}"
@@ -12,12 +13,15 @@
   pkgname: "python_{{python_version}}-{{name}}"
   parent: "{{root}}"
   root: "{{pkg_defaults.app_path}}/python/{{python_version}}"
+  pypiurl: https://files.pythonhosted.org/packages/{{versions.pycuda_hash}}
+  vendor_source:  "{{pypiurl}}/{{src_tarball}}"
+  description: |
+     PyCUDA {[version}} lets you access Nvidia’s CUDA parallel computation API from Python.
   build:
     configure: ./configure.py
     configure_args: 
     modules: 
       - "python/{{python_version}}"
-      - "{{compiler}}/{{compiler_version}}"
       - cuda/{{cuda_version}}
   install:
     makeinstall: python{{python_major}} setup.py install --root $(ROOT) --prefix {{root}}
