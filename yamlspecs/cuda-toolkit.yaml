@@ -5,8 +5,16 @@
   name: "{{basename}}" 
   src_tarball: "{{cuda.src_tarball}}" 
   baserpm: "{{name}}_{{cuda.shortversion}}"
-  description: >
-    CUDA Version {{cuda.version}}
+  description: |
+    CUDA Version {{cuda.version}}. Includes  NVIDIA CUDA tools
+    cuda-memcheck - Check Tool
+    cuobjdump     - Object Utility
+    nvdisasm      - disassembler
+    nvprune       - Prune Tool
+    nvcc          - CUDA Compiler
+    nvprof        - Command-Line Profiler
+    nvvp          - Visual Profiler
+
   addfile: 
     - filter-requires-{{name}}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp
