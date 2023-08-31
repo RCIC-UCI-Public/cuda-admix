@@ -1,8 +1,8 @@
 ## This is the CUDA11 version
 !include packages.yaml
 ---
-versions: versions-cuda11.yaml
-rversions: !include versions-cuda11.yaml
+versions: versions-114.yaml
+rversions: !include versions-114.yaml
 bootstrap0:
    - cuda11-toolkit
    - cuda11-toolkit-static-libs

@@ -30,5 +30,5 @@ manifest:
    - "{{cudnn.name}}-devel-{{cudnn.version}}"
    - "{{cudnn.name}}-doc-{{cudnn.version}}"
 sets:
-   - cuda11
-   - latest
+   - "114"
+   - "117"
