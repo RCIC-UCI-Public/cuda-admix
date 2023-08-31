@@ -3,6 +3,7 @@
 ---
 - package: CUDA toolkit samples 
   name: "{{basename}}-samples"
+  release: 7
   description: >
     CUDA Toolkit Version {{cuda.version}} samples 
   contents: cuda-samples 
@@ -17,7 +18,7 @@
       cp -R {{extractDir}}/{{contents}} {{name}};
       cd {{name}}/{{contents}}/{{utilities_dir}};
       export LDFLAGS='';
-      for p in {{utilities}}; do (cd $$p; make; /bin/rm $$p); done
+      for p in {{utilities}}; do (cd $$p; make; /bin/rm $$p $$p.o); done
   install:
     makeinstall: >
       mv {{name}}/{{contents}} $(ROOT){{root}}
