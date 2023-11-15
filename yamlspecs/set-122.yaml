@@ -1,0 +1,24 @@
+## This is the CUDA12 version
+!include packages.yaml
+---
+versions: versions-122.yaml
+rversions: !include versions-122.yaml
+bootstrap0:
+   - cuda12-toolkit
+   - cuda12-toolkit-static-libs
+   - cuda-module
+bootstrap:
+   - "{{bootstrap0}}"
+   - cudnn-download
+build:
+   - "{{build12}}" 
+build12:
+   - cuda12-toolkit-nsight
+   - cuda12-driver
+   - pycuda
+manifest:
+   - "{{bootstrap0}}"
+   - "{{build12}}"
+   - "{{cudnn.name}}-{{cudnn.version}}"
+   - "{{cudnn.name}}-devel-{{cudnn.version}}"
+   - "{{cudnn.name}}-samples-{{cudnn.version}}"
