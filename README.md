@@ -38,3 +38,27 @@ Login on NVIDIa developer site,
    There are separate RPMS for cuda 12.x and cuda 11.x for the same cudnn version,
    use one for cuda 12.
 
+## ffmpeg
+
+FFmpeg is the most popular multimedia transcoding software and is used extensively for video
+and audio transcoding.  NVENC and NVDEC can be effectively used with FFmpeg to significantly
+speed up video decoding, encoding, and end-to-end transcoding.
+For detailed info see https://docs.nvidia.com/video-technologies/video-codec-sdk/12.0/ffmpeg-with-nvidia-gpu/index.html
+
+For ffmpeg v 6.1:
+
+- install ffnvcodec headers (see ffnvcodec.yamlnd corresponding module file)
+- compile ffmpeg with ffncodec and cuda modules.
+
+VErify once built:
+
+```bash
+module load ffmpeg/6.1
+ffmpeg -hide_banner -encoders  | grep nvenc
+ffmpeg -hide_banner -decoders | grep cuvid
+```
+
+Useful links
+- compiling ffmpeg https://trac.ffmpeg.org/wiki/CompilationGuide/Centos
+- github repo https://github.com/FFmpeg/nv-codec-headers
+- ffmpeg/ffnvcodec interaction https://github.com/omen23/ffmpeg-ffnvcodec-explanation

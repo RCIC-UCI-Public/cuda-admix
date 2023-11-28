@@ -1,0 +1,17 @@
+!include rcic-package.yaml
+---
+- package: ffnvcodec multimedia framework 
+  name: ffnvcodec 
+  versions: !include versions.yaml
+  version: "{{versions.ffnvcodec}}"
+  vendor_source: https://github.com/FFmpeg/nv-codec-headers/archive/refs/tags/n{{version}}.{{extension}}
+  src_dir: nv-codec-headers-n{{version}}
+  description: |
+    FFmpeg version of headers {{version}} required to interface with Nvidias codec APIs.
+    See https://github.com/FFmpeg/nv-codec-headers
+  build:
+    configure: echo
+    configure_args:
+    pkgmake:  echo
+  install:
+    makeinstall: $(MAKE) DESTDIR=$(ROOT) PREFIX={{root}} install

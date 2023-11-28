@@ -1,6 +1,7 @@
 !include updates8.yaml
 ---
 ffmpeg60: "6.1"
+ffnvcodec: "12.1.14.0"
 cuda:
   major: "12"
   minor: "2"

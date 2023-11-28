@@ -10,6 +10,8 @@ bootstrap0:
 bootstrap:
    - "{{bootstrap0}}"
    - cudnn-download
+   - ffnvcodec
+   - ffnvcodec-module
 build:
    - "{{build12}}" 
 build12:

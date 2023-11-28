@@ -20,3 +20,4 @@ b6df43bc65262ac836053d361ac0802adf936057  sources/NVIDIA-Linux-x86_64-535.54.03.
 a20e12302b1127d172a06d7a2d18262daa7501e4  sources/libcudnn8-8.9.6.50-1.cuda12.2.x86_64.rpm
 63277e48681ff6bb429ba9d6acd982dbb1e80eb6  sources/libcudnn8-devel-8.9.6.50-1.cuda12.2.x86_64.rpm
 722bdf5edb4e343c6bf80e82f3b3c5985723f0ec  sources/libcudnn8-samples-8.9.6.50-1.cuda12.2.x86_64.rpm
+241fd03b5be230e4db2ffc04c4813f0764714301  sources/ffnvcodec-12.1.14.0.tar.gz

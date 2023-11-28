@@ -1,0 +1,12 @@
+!include ffnvcodec.yaml
+!include rcic-module.yaml
+---
+- package: ffnvcodec module
+  category: LIBRARIES
+  module:
+    prepend_path:
+      - PKG_CONFIG_PATH {{root}}/{{module.lib}}/pkgconfig
+    setenv:
+      - FFNVCODEC_DIR {{root}}
+      - FFNVCODEC_INC {{root}}/include
+      - FFNVCODEC_LIB {{root}}/lib

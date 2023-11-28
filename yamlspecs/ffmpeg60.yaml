@@ -8,4 +8,5 @@
   build:
      modules: 
        - "{{cuda_name}}/{{cuda_version}}"
+       - ffnvcodec/{{versions.ffnvcodec}}
      configure_args: --enable-shared --enable-nonfree --enable-cuda-nvcc --enable-libnpp --disable-x86asm --extra-cflags=-I$$CUDA_PATH/include --prefix={{root}}
