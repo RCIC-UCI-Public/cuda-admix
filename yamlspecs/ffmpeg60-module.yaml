@@ -1,0 +1,8 @@
+# module for ffmpeg60
+!include ffmpeg60.yaml
+!include ffmpeg-common-module.yaml
+---
+- version: "{{versions.ffmpeg60}}"
+  release: 1
+  module:
+    prereq:

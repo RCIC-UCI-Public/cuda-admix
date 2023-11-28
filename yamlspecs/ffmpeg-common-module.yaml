@@ -1,9 +1,8 @@
-!include ffmpeg.yaml
 !include rcic-module.yaml
 ---
 - package: ffmpeg module
   category: LIBRARIES
-  release: 3
+  release: 4
   module:
     prepend_path:
       - *Prepend_path

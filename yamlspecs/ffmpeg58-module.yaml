@@ -1,0 +1,5 @@
+# module for ffmpeg58
+!include ffmpeg58.yaml
+!include ffmpeg-common-module.yaml
+---
+- version: "{{versions.ffmpeg58}}"

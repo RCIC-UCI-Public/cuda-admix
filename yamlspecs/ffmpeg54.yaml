@@ -1,7 +1,11 @@
 ## Build the 54 versions of libraries for CUDA
-!include ffmpeg.yaml
+!include ffmpeg-common.yaml
 ---
   version: "{{versions.ffmpeg54}}"
   build:
+    preconfigure: sed -i 's/anchor{/anchor\\{/' doc/texi2pod.pl
     configure_args: --enable-shared --disable-yasm --prefix={{root}}
 
+# The soruce code has a bug in the above perl file, hence the sed command.
+# Without fixing only a subest of libraries is installed 
+# and all the binaries are missing.

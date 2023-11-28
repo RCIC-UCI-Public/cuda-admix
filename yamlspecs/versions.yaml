@@ -2,7 +2,7 @@
 ---
 ffmpeg53: "0.10.16"
 ffmpeg54: "1.2.12"
-ffmpeg: "4.1.3"
+ffmpeg58: "4.1.3"
 cuda:
   major: "10"
   minor: "1"

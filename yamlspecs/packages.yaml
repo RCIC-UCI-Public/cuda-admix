@@ -12,8 +12,8 @@ build:
    - ffmpeg53-module
    - ffmpeg54
    - ffmpeg54-module
-   - ffmpeg
-   - ffmpeg-module
+   - ffmpeg58
+   - ffmpeg58-module
    - cuda-toolkit-doc
    - cuda-toolkit-nsight
    - cuda-toolkit-extras
