@@ -15,7 +15,8 @@ build:
 build12:
    - cuda12-toolkit-nsight
    - cuda12-driver
-   - pycuda
+   - ffmpeg60
+   - ffmpeg60-module
 manifest:
    - "{{bootstrap0}}"
    - "{{build12}}"

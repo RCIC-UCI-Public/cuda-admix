@@ -1,5 +1,6 @@
 !include updates8.yaml
 ---
+ffmpeg60: "6.1"
 cuda:
   major: "12"
   minor: "2"
