@@ -5,7 +5,8 @@
   release: 4
   versions: !include versions.yaml
   version: "{{versions.pycuda}}"
-  cuda_version: "{{versions.cuda.version}}"
+  cuda_name: cuda
+  cuda_version: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
   python_version: "{{versions.python3}}"
   python_major: "{{versions.python3_major}}"
   compiler: "{{versions.compiler.name}}"
@@ -22,7 +23,7 @@
     configure_args: 
     modules: 
       - "python/{{python_version}}"
-      - cuda/{{cuda_version}}
+      - "{{cuda_name}}/{{cuda_version}}"
   install:
     makeinstall: python{{python_major}} setup.py install --root $(ROOT) --prefix {{root}}
   requires:
