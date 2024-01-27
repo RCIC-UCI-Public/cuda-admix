@@ -1,0 +1,40 @@
+!include rcic-package.yaml
+---
+- package: gdrcopy
+  name: gdrcopy 
+  versions: !include versions.yaml
+  version: "{{versions.gdrcopy}}"
+  cuda_name: cuda
+  cuda_version: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
+  vendor_source: https://github.com/NVIDIA/gdrcopy/archive/refs/tags/v{{version}}.{{extension}}
+  drv_version: "{{versions.cuda_driver.version}}"
+  description: |
+    A low-latency GPU memory copy library based on NVIDIA GPUDirect RDMA technology.
+    Compiled with cuda {{cuda_version}} and cuda driver {{drv_version}}.
+    See https://github.com/NVIDIA/gdrcopy for info how to use GPUDirect RDMA
+  systemd_dir: /etc/systemd/system
+  installer: gdrdrv-installer.sh
+  service: "gdrdrv-installer.service"
+  addfile:
+    - "{{installer}}"
+    - "{{service}}"
+  build:
+    modules:
+       - "{{cuda_name}}/{{cuda_version}}"
+    configure: echo
+    configure_args:
+    pkgmake: unset MAKEFLAGS; make prefix={{root}} CUDA=$$CUDA_PATH lib exes
+  install:
+    makeinstall: >
+      unset MAKEFLAGS; $(MAKE) DESTDIR=$(ROOT) prefix={{root}} CUDA=$$CUDA_PATH install;
+      mkdir -p $(ROOT)/{{root}}/src;
+      cp -p -r src/gdrdrv $(ROOT)/{{root}}/src;
+      $(INSTALL) -m 500 ../{{installer}}  $(ROOT)/{{root}};
+      sed -i 's/%VERSION%/{{version}}/' $(ROOT)/{{root}}/{{installer}};
+      sed -i 's/%CUDA_VERSION%/{{cuda_version}}/' $(ROOT)/{{root}}/{{installer}};
+      mkdir -p $(ROOT)/{{systemd_dir}};
+      $(INSTALL) -m 644 ../{{service}}  $(ROOT)/{{systemd_dir}};
+      sed -i 's@%PATH%@{{root}}@' $(ROOT)/{{systemd_dir}}/{{service}}
+  files:
+    - "{{parent}}"
+    - "{{systemd_dir}}/*"

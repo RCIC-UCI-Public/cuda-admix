@@ -1,0 +1,14 @@
+!include gdrcopy.yaml
+!include rcic-module.yaml
+---
+- package: gdrcopy module
+  category: LIBRARIES
+  module:
+    prepend_path:
+      - PATH {{root}}/bin
+      - LD_LIBRARY_PATH {{root}}/{{module.lib}}
+    setenv:
+      - GDRCOPY_DIR {{root}}
+      - GDRCOPY_INC {{root}}/include
+      - GDRCOPY_LIB {{root}}/lib
+    prereq:

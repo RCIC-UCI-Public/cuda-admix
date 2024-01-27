@@ -1,0 +1,11 @@
+[Unit]
+Description=run the gdrdrv installer if not already installed. It will also create /dev/gdrdrv
+After=network.target rsyslog.service nvidia-installer.service
+
+[Service]
+Type=oneshot
+ExecStart=%PATH%/gdrdrv-installer.sh
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
