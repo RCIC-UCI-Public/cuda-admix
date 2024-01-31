@@ -2,9 +2,7 @@
 - package: CUDA Driver Run file 
   dmajor_minor: "{{versions.cuda_driver.major}}.{{versions.cuda_driver.minor}}"
   name: "cuda-driver"
-  version: "{{dmajor_minor}}"
   drv_version: "{{versions.cuda_driver.version}}"
-  root: "{{parent}}/{{versions.cuda_driver.major}}.{{versions.cuda_driver.minor}}"
   src_tarball: NVIDIA-Linux-x86_64-{{drv_version}}.run
   description: |
     CUDA Toolkit Version {{dmajor_minor}} Driver. This is just the
