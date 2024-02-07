@@ -1,11 +1,15 @@
 ---
+rpmrelcuda: 10
 cuda:
   major: "11"
   minor: "4"
   subrelease: "0"
   fullrelease: "470.42.01"
-  shortversion: "11.4"
 cudnn:
   name: libcudnn8
   version: "8.2.2.26"
   release: "1.cuda11.4"
+cuda_driver:
+  major: "11"
+  minor: "4"
+  version: "470.42.01"

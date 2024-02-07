@@ -5,7 +5,8 @@
   name: "{{basename}}-nsight"
   description: >
     CUDA Toolkit Version {{cuda.version}} nsight Eclipse plugin 
-  contents: nsightee_plugins libnsight NsightCompute-2019.3 NsightSystems-2019.3
+  findArgs: -path ./\*nsight\* -o -name \*nsight\* 
   addfile: 
     - filter-requires-{{name}}.sh
   rpmFilters: *filterRequires
+  rpmBuildIdLinks: none

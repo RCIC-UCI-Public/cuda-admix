@@ -3,13 +3,14 @@
 ---
 - package: CUDA toolkit samples 
   name: "{{basename}}-samples"
-  release: 7
+# release: 7
   description: >
     CUDA Toolkit Version {{cuda.version}} samples 
-  contents: cuda-samples 
-  
+  contents: !ifeq "{{cuda.major}},10,/cuda-samples,samples"
   utilities_dir: 1_Utilities
   utilities: bandwidthTest deviceQueryDrv topologyQuery deviceQuery p2pBandwidthLatencyTest UnifiedMemoryPerf
+  addfile:
+    - filter-requires-{{name}}.sh
   build:
     modules:
       - "{{cuda.name}}/{{cuda.shortversion}}"
@@ -22,10 +23,13 @@
   install:
     makeinstall: >
       mv {{name}}/{{contents}} $(ROOT){{root}}
-
   rpmBuildIdLinks: none
+  rpmFilters: *filterRequires 
   rpm:
      sysextra: *RpmExtras
      extras: >
        %define __brp_strip_static_archive /bin/true
        \n{{rpm.sysextra}}
+  requires:
+    - "{{cudabaserpm}}"
+    - "{{basename}}-static-libs_{{cuda.shortversion}}"

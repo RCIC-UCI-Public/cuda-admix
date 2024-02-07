@@ -1,5 +1,6 @@
 !include updates8.yaml
 ---
+rpmrelcuda: 10
 ffmpeg60: "6.1"
 ffnvcodec: "12.1.14.0"
 cuda:

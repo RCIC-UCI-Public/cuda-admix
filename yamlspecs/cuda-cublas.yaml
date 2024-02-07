@@ -4,7 +4,5 @@
   name: "cuda-cublas"
   description: >
     CUDA CUBLAS {{cuda.version}} 
-  contents: cublas
-  install:
-    makeinstall: >
-      cp -pR {{extractDir}}/cublas $(ROOT){{root}}
+  findArgs: -path ./cublas\* 
+  toplevel:

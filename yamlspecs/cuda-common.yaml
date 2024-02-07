@@ -2,7 +2,7 @@
 ---
 - package: CUDA Definitions 
   basename: cuda-toolkit
-  release: 6
+  release: "{{versions.rpmrelcuda}}"
   cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
   versions: !include versions.yaml
   version: "{{cuda.shortversion}}" 
@@ -21,15 +21,24 @@
   parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
   root: "{{parent}}/{{cuda.shortversion}}"
   extractDir: $(REDHAT.BUILD)/cudaExtract
-  extractDir2: "{{extractDir}}" 
+  extractDir2: !ifeq "{{cuda.major}},10,{{extractDir}},$(REDHAT.BUILD)/cudaExtractDriver"
+  extractarg: !ifeq "{{cuda.major}},10,extract,installpath"
+  contents: .
+  toplevel: !ifeq "{{cuda.major}},10,/cuda-toolkit,"
+  listing: listing
+  findArgs:
   build:
     configure: echo no configure required 
+    configure_args: echo no configure required 
     pkgmake: echo files extracted during {{basename}} build 
-    target: 
-    modules: ""
   install:
     makeinstall: >
-      for x in {{contents}}; do  cp -pR {{extractDir}}/{{basename}}/$$x $(ROOT){{root}}; done
+      pushd {{extractDir}}{{toplevel}};
+      find {{contents}} {{findArgs}} > {{listing}};
+      if [ ! -d $(ROOT){{root}} ]; then mkdir -p $(ROOT){{root}}; fi;
+      cpio -p --make-directories $(ROOT){{root}} < {{listing}};
+      /bin/rm -rf $(ROOT){{root}}/listing;
+      popd
   files:
     - "{{parent}}"
   requires:

@@ -5,7 +5,7 @@
 - package: CUDA module
   name: "{{cuda.name}}"
   version: "{{cuda.shortversion}}"
-  release: 6
+  release: 10
   category: TOOLS
   toolkit_prefix: "{{root}}/lib64"
   nvvm_prefix: "{{root}}/nvvm/lib64"

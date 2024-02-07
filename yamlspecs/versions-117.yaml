@@ -1,16 +1,15 @@
 !include updates8.yaml
 ---
+rpmrelcuda: 10
 cuda:
   major: "11"
   minor: "7"
   subrelease: "1"
   fullrelease: "515.65.01"
-  shortversion: "11.7"
 cuda_driver:
-  major: "12"
-  minor: "2"
-  version: "535.54.03"
-
+  major: "11"
+  minor: "7"
+  version: "515.65.01"
 cudnn:
   name: libcudnn8
   version: "8.5.0.96"

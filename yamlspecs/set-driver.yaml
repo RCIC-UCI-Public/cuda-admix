@@ -1,0 +1,8 @@
+## This is for building driver from NVIDIA-Linux-x86_64-<drv>.run
+---
+versions: versions-driver.yaml
+bootstrap:
+build:
+   - cuda-driver-standalone
+manifest:
+   - "{{build}}"

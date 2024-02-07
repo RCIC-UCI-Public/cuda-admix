@@ -1,17 +1,15 @@
-## This is the CUDA11 version
-!include set-114.yaml
+## This is the CUDA 11.7* version
+!include packages.yaml
 ---
 versions: versions-117.yaml
 rversions: !include versions-117.yaml
-build11:
-   - cuda11-toolkit-nsight
-   - cuda11-driver
+build:
    - pycuda
    - gdrcopy
    - gdrcopy-module
 manifest:
-   - "{{bootstrap0}}"
-   - "{{build11}}"
+   - "{{bootstrap_cuda}}"
+   - "{{build}}"
    - "{{cudnn.name}}-{{cudnn.version}}"
    - "{{cudnn.name}}-devel-{{cudnn.version}}"
    - "{{cudnn.name}}-samples-{{cudnn.version}}"

@@ -1,0 +1,7 @@
+!include cuda-driver.yaml
+---
+- package: CUDA Driver Run file
+  src_tarball: "{{driver_run_file}}"
+  driver_run_file: NVIDIA-Linux-x86_64-{{drv_version}}.run
+  build:
+    pkgmake: 

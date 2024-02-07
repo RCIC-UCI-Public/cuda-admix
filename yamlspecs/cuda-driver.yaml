@@ -1,2 +1,38 @@
 !include cuda-common.yaml
-!include cuda-driver-common.yaml
+---
+- package: CUDA Driver Run file
+  dmajor_minor: "{{versions.cuda_driver.major}}.{{versions.cuda_driver.minor}}"
+  name: "cuda-driver"
+  drv_version: "{{versions.cuda_driver.version}}"
+  src_tarball: "{{cuda.src_tarball}}"
+  driver_run_file: NVIDIA-Linux-x86_64-{{drv_version}}.run
+  description: |
+    CUDA Toolkit Version {{dmajor_minor}} Driver. This is just the
+    {{driver_run_file}} file put into the {{root}} tree.
+  cmdfile: disable-nouveau.yml
+  systemd_dir: /etc/systemd/system
+  service_in: nvidia-installer.service.in
+  service: nvidia-installer.service
+  addfile:
+    - "{{cmdfile}}"
+    - installer.sh
+    - "{{service_in}}"
+  build:
+    pkgmake: >
+      if [ ! -f {{extractDir2}}/{{driver_run_file}} ]; then \
+          /bin/rm -rf {{extractDir2}}; \
+          mkdir {{extractDir2}}; \
+          sh {{src_tarball}} --extract={{extractDir2}}; \
+      fi
+  install:
+    makeinstall: >
+      $(INSTALL) -m744 {{extractDir2}}/{{driver_run_file}} $(ROOT){{root}};
+      $(INSTALL) {{cmdfile}} $(ROOT)/{{root}};
+      $(INSTALL) -m 500 installer.sh $(ROOT)/{{root}};
+      sed -i 's/%VERSION%/{{version}}/' $(ROOT)/{{root}}/installer.sh;
+      mkdir -p $(ROOT)/{{systemd_dir}};
+      sed 's@%PATH%@{{root}}@' {{service_in}} > $(ROOT)/{{systemd_dir}}/{{service}}
+  files:
+    - "{{parent}}"
+    - "{{systemd_dir}}/*"
+  requires:

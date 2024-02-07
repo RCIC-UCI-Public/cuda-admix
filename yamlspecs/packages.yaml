@@ -1,14 +1,18 @@
 ---
 rversions: !include versions.yaml
-bootstrap:
-   - cuda-toolkit
-   - cuda-module
-   - cudnn-download
 system:
    - libaio-devel
    - openmpi-devel
    - SDL-devel
    - SDL2-devel
+bootstrap_cuda:
+   - cuda-toolkit
+   - cuda-module
+   - cuda-toolkit-static-libs
+   - cuda-toolkit-nsight
+bootstrap:
+   - "{{bootstrap_cuda}}"
+   - cudnn-download
 build:
    - ffmpeg53
    - ffmpeg53-module
@@ -17,8 +21,6 @@ build:
    - ffmpeg58
    - ffmpeg58-module
    - cuda-toolkit-doc
-   - cuda-toolkit-nsight
-   - cuda-toolkit-extras
    - cuda-cublas 
    - cuda-samples
    - pycuda
@@ -35,3 +37,4 @@ sets:
    - "114"
    - "117"
    - "122"
+   - driver

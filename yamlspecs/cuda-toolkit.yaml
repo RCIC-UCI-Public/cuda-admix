@@ -14,11 +14,11 @@
     nvcc          - CUDA Compiler
     nvprof        - Command-Line Profiler
     nvvp          - Visual Profiler
-
   addfile: 
     - filter-requires-{{name}}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp
-  contents: bin  EULA.txt  include  lib64 libnvvp nvml share targets version.txt nvvm src tools
+  findArgs: -not -path ./doc\* -not -path ./samples\* -not -path ./\*nsight\* -not -name \*nsight\* -not -name \*.a
+# toplevel: !ifeq "{{cuda.major}},10,/cuda-toolkit,"
   build:
     pkgmake: >
       if [ -d {{extractDir}} ]; then /bin/rm -rf {{extractDir}}; fi;
@@ -26,7 +26,7 @@
       mkdir -p {{tmpdir}};
       mkdir -p {{extractDir}};
       export TMPDIR={{tmpdir}};
-      sh {{src_tarball}} --extract={{extractDir}}
+      sh {{src_tarball}} --silent --toolkit --samples --{{extractarg}}={{extractDir}}
   requires: ""
   rpmFilters: *filterRequires
   rpmBuildIdLinks: none
