@@ -14,6 +14,4 @@ cudnn:
   name: libcudnn8
   version: "8.5.0.96"
   release: "1.cuda11.7"
-pycuda: "2022.1"
-pycuda_hash: "2d/1f/48a3a5b2c715345e7af1e09361100bd98c3d72b4025371692ab233f523d3"
 gdrcopy: "2.4.1"

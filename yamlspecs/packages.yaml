@@ -23,7 +23,6 @@ build:
    - cuda-toolkit-doc
    - cuda-cublas 
    - cuda-samples
-   - pycuda
 cudnn:
   name: "{{rversions.cudnn.name}}"
   version: "{{rversions.cudnn.version}}"

@@ -13,8 +13,6 @@ cudnn:
   name: "libcudnn7"
   version: "7.6.4.38"
   release: "1.cuda10.1"
-pycuda: "2022.1"
-pycuda_hash: "2d/1f/48a3a5b2c715345e7af1e09361100bd98c3d72b4025371692ab233f523d3"
 cuda_driver:
   major: "10"
   minor: "1"

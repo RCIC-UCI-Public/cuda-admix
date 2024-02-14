@@ -4,7 +4,6 @@
 versions: versions-117.yaml
 rversions: !include versions-117.yaml
 build:
-   - pycuda
    - gdrcopy
    - gdrcopy-module
 manifest:

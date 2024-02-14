@@ -13,7 +13,6 @@ e78ce10dea1d8603fdf7b6a74ab2b836de405529  sources/cuda_11.4.0_470.42.01_linux.ru
 e148bfcfcef08a99ef8b61501f2af152194928d9  sources/libcudnn8-8.5.0.96-1.cuda11.7.x86_64.rpm 1Gy1YWi0AYZKfAZrENYsXqRbAoqLJTF4t
 664150dc3e375d984cd98accc0e22d93a44f5526  sources/libcudnn8-devel-8.5.0.96-1.cuda11.7.x86_64.rpm 1JAbRxFgz_G4W9ErtiCG_jncrREjEz89v
 3f8b531629f026f007262acca44a66e7a75d4abd  sources/libcudnn8-samples-8.5.0.96-1.cuda11.7.x86_64.rpm 10Pr8Dco2Zvyh-lWqGBmYs3waWolrCNBV
-494386e21f14c28ade0199f7b6c11480f4c89c59  sources/pycuda-2022.1.tar.gz 1rKZ7coD6WVceQ96hAlvEB05wtgEKknLj
 b6df43bc65262ac836053d361ac0802adf936057  sources/NVIDIA-Linux-x86_64-535.54.03.run
 43fe0376c359391d8ba373b55e2454fda12bf193  sources/cuda_12.2.0_535.54.03_linux.run
 1b2c93bed564b31da4d76794ec317a6a54978ab1  sources/ffmpeg-6.1.tar.bz2
