@@ -14,10 +14,6 @@ bootstrap:
    - "{{bootstrap_cuda}}"
    - cudnn-download
 build:
-   - ffmpeg53
-   - ffmpeg53-module
-   - ffmpeg54
-   - ffmpeg54-module
    - ffmpeg58
    - ffmpeg58-module
    - cuda-toolkit-doc

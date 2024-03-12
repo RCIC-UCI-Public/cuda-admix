@@ -1,7 +1,5 @@
 !include site.yaml
 ---
-ffmpeg53: "0.10.16"
-ffmpeg54: "1.2.12"
 ffmpeg58: "4.1.3"
 rpmrelcuda: 10
 cuda:

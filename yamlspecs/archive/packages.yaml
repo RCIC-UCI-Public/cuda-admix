@@ -1,0 +1,7 @@
+# list only removed packages
+---
+build:
+#  - ffmpeg53
+#  - ffmpeg53-module
+#  - ffmpeg54
+#  - ffmpeg54-module

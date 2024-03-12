@@ -1,0 +1,4 @@
+#list only removed packages
+---
+#ffmpeg53: "0.10.16"
+#ffmpeg54: "1.2.12"
