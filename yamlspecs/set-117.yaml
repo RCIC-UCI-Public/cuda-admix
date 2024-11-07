@@ -9,6 +9,6 @@ build:
 manifest:
    - "{{bootstrap_cuda}}"
    - "{{build}}"
-   - "{{cudnn.name}}-{{cudnn.version}}"
-   - "{{cudnn.name}}-devel-{{cudnn.version}}"
-   - "{{cudnn.name}}-samples-{{cudnn.version}}"
+#   - "{{cudnn.name}}-{{cudnn.version}}"
+#   - "{{cudnn.name}}-devel-{{cudnn.version}}"
+#   - "{{cudnn.name}}-samples-{{cudnn.version}}"

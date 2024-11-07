@@ -9,7 +9,6 @@ bootstrap:
    - ffnvcodec
    - ffnvcodec-module
 build:
-   - cuda-driver
    - ffmpeg60
    - ffmpeg60-module
 manifest:

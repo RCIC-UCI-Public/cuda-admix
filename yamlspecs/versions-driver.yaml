@@ -1,5 +1,5 @@
 # include cuda version file to which an updated driver is added
-!include versions-117.yaml
+!include versions-122.yaml
 ---
 # update release to higher then correspoding cuda driver rpm release
 rpmrelcuda: 11
