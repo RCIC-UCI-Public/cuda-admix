@@ -1,5 +1,4 @@
 ---
-rversions: !include versions.yaml
 system:
    - libaio-devel
    - openmpi-devel
@@ -11,25 +10,13 @@ bootstrap_cuda:
    - cuda-toolkit-static-libs
    - cuda-toolkit-nsight
 bootstrap:
-   - "{{bootstrap_cuda}}"
-   - cudnn-download
 build:
-   - ffmpeg58
-   - ffmpeg58-module
-   - cuda-toolkit-doc
-   - cuda-cublas 
-   - cuda-samples
-cudnn:
-  name: "{{rversions.cudnn.name}}"
-  version: "{{rversions.cudnn.version}}"
 manifest:
-   - "{{build}}"
    - "{{bootstrap}}"
-   - "{{cudnn.name}}-{{cudnn.version}}"
-   - "{{cudnn.name}}-devel-{{cudnn.version}}"
-   - "{{cudnn.name}}-doc-{{cudnn.version}}"
+   - "{{build}}"
 sets:
-   - "114"
-   - "117"
-   - "122"
-   - driver
+  - "101"
+  - "114"
+  - "117"
+  - "122"
+  - driver

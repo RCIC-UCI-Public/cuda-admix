@@ -2,18 +2,19 @@
 !include packages.yaml
 ---
 versions: versions-122.yaml
-rversions: !include versions-122.yaml
-bootstrap:
+bootstrap0:
    - "{{bootstrap_cuda}}"
-   - cudnn-download
    - ffnvcodec
    - ffnvcodec-module
+bootstrap:
+   - "{{bootstrap0}}"
+   - cudnn-download
 build:
    - ffmpeg60
    - ffmpeg60-module
 manifest:
-   - "{{bootstrap}}"
+   - "{{bootstrap0}}"
    - "{{build}}"
-   - "{{cudnn.name}}-{{cudnn.version}}"
-   - "{{cudnn.name}}-devel-{{cudnn.version}}"
-   - "{{cudnn.name}}-samples-{{cudnn.version}}"
+   - libcudnn8
+   - libcudnn8-devel
+   - libcudnn8-samples

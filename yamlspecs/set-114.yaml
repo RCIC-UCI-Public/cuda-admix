@@ -2,9 +2,7 @@
 !include packages.yaml
 ---
 versions: versions-114.yaml
-rversions: !include versions-114.yaml
+bootstrap:
+   - "{{bootstrap_cuda}}"
 build:
    - cuda-samples
-manifest:
-   - "{{bootstrap_cuda}}"
-   - "{{build}}"

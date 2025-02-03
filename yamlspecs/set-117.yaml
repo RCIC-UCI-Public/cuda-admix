@@ -2,13 +2,8 @@
 !include packages.yaml
 ---
 versions: versions-117.yaml
-rversions: !include versions-117.yaml
+bootstrap:
+   - "{{bootstrap_cuda}}"
 build:
    - gdrcopy
    - gdrcopy-module
-manifest:
-   - "{{bootstrap_cuda}}"
-   - "{{build}}"
-#   - "{{cudnn.name}}-{{cudnn.version}}"
-#   - "{{cudnn.name}}-devel-{{cudnn.version}}"
-#   - "{{cudnn.name}}-samples-{{cudnn.version}}"

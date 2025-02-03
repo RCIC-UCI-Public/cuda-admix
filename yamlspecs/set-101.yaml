@@ -1,0 +1,19 @@
+## This is the CUDA 10.1* version
+!include packages.yaml
+---
+versions: versions-101.yaml
+bootstrap:
+   - "{{bootstrap_cuda}}"
+   - cuddn-download
+build:
+   - ffmpeg58
+   - ffmpeg58-module
+   - cuda-toolkit-doc
+   - cuda-cublas 
+   - cuda-samples
+manifest:
+   - "{{bootstrap_cuda}}"
+   - "{{build}}"
+   - libcudnn7
+   - libcudnn7-devel
+   - libcudnn7-doc
