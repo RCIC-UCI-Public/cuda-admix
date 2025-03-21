@@ -2,9 +2,9 @@
 !include versions-122.yaml
 ---
 # update release to higher then correspoding cuda driver rpm release
-rpmrelcuda: 11
+rpmrelcuda: 12
 # new driver info 
 cuda_driver:
   major: "12"
   minor: "2"
-  version: "535.54.03"
+  version: "535.230.02"
