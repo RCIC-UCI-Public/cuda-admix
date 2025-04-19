@@ -20,13 +20,14 @@
   findArgs: -not -path ./doc\* -not -path ./samples\* -not -path ./\*nsight\* -not -name \*nsight\* -not -name \*.a
 # toplevel: !ifeq "{{cuda.major}},10,/cuda-toolkit,"
   build:
+    skipcheck: !eval "'--override' if {{versions.os_release}} >= 9 else ''"
     pkgmake: >
       if [ -d {{extractDir}} ]; then /bin/rm -rf {{extractDir}}; fi;
       if [ -d {{tmpdir}} ]; then /bin/rm -rf {{tmpdir}}; fi;
       mkdir -p {{tmpdir}};
       mkdir -p {{extractDir}};
       export TMPDIR={{tmpdir}};
-      sh {{src_tarball}} --silent --toolkit --samples --{{extractarg}}={{extractDir}}
+      sh {{src_tarball}} --silent --toolkit --samples {{build.skipcheck}} --{{extractarg}}={{extractDir}}
   requires: ""
   rpmFilters: *filterRequires
   rpmBuildIdLinks: none
