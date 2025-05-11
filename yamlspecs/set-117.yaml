@@ -7,3 +7,5 @@ bootstrap:
 build:
    - gdrcopy
    - gdrcopy-module
+   - ffmpeg58
+   - ffmpeg58-module

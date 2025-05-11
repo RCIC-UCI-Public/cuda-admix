@@ -16,3 +16,4 @@ cudnn:
   version: "8.5.0.96"
   release: "1.cuda11.7"
 gdrcopy: "2.4.1"
+ffmpeg58: "4.1.3"
