@@ -20,8 +20,8 @@
   no_src_dir: True
   parent: "{{pkg_defaults.app_path}}/{{cuda.name}}"
   root: "{{parent}}/{{cuda.shortversion}}"
-  extractDir: $(REDHAT.BUILD)/cudaExtract
-  extractDir2: !ifeq "{{cuda.major}},10,{{extractDir}},$(REDHAT.BUILD)/cudaExtractDriver"
+  extractDir: $(REDHAT.BUILD)/cudaExtract-{{version}}
+  extractDir2: !ifeq "{{cuda.major}},10,{{extractDir}},$(REDHAT.BUILD)/cudaExtractDriver-{{version}}"
   extractarg: !ifeq "{{cuda.major}},10,extract,installpath"
   contents: .
   toplevel: !ifeq "{{cuda.major}},10,/cuda-toolkit,"
