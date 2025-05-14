@@ -16,7 +16,7 @@
     nvvp          - Visual Profiler
   addfile: 
     - filter-requires-{{name}}.sh
-  tmpdir: $(REDHAT.BUILD)/cudaTmp
+  tmpdir: $(REDHAT.BUILD)/cudaTmp-{{version}}
   findArgs: -not -path ./doc\* -not -path ./samples\* -not -path ./\*nsight\* -not -name \*nsight\* -not -name \*.a
 # toplevel: !ifeq "{{cuda.major}},10,/cuda-toolkit,"
   build:
