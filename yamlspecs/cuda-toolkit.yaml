@@ -2,8 +2,8 @@
 !include rpm.yaml
 ---
 - package: CUDA toolkit
-  name: "{{basename}}" .
-  src_tarball: "{{cuda.src_tarball}}" .
+  name: "{{basename}}"
+  src_tarball: "{{cuda.src_tarball}}"
   baserpm: "{{name}}_{{cuda.shortversion}}"
   description: |
     CUDA Version {{cuda.version}}. Includes  NVIDIA CUDA tools
@@ -14,7 +14,7 @@
     nvcc          - CUDA Compiler
     nvprof        - Command-Line Profiler
     nvvp          - Visual Profiler
-  addfile: .
+  addfile:
     - filter-requires-{{name}}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp-{{version}}
   findArgs: -not -path ./doc\* -not -path ./samples\* -not -path ./\*nsight\* -not -name \*nsight\* -not -name \*.a
