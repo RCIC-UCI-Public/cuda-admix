@@ -1,7 +1,7 @@
 !include cuda-common.yaml
 ---
-- package: CUDA toolkit static libs 
+- package: CUDA toolkit static libs
   name: "{{basename}}-static-libs"
   description: >
-    CUDA Toolkit Version {{cuda.version}} static libraries  
+    CUDA Toolkit Version {{cuda.version}} static libraries.
   findArgs: -not -path ./samples\* -name \*.a

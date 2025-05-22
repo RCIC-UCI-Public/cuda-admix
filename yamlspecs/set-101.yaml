@@ -9,7 +9,7 @@ build:
    - ffmpeg58
    - ffmpeg58-module
    - cuda-toolkit-doc
-   - cuda-cublas 
+   - cuda-cublas
    - cuda-samples
 manifest:
    - "{{bootstrap_cuda}}"

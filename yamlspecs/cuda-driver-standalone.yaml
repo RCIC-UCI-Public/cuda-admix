@@ -5,4 +5,4 @@
   driver_run_file: NVIDIA-Linux-x86_64-{{drv_version}}.run
   extractDir2: .
   build:
-    pkgmake: 
+    pkgmake:

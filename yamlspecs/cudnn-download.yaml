@@ -1,20 +1,20 @@
 !include rcic-package.yaml
 ---
 - package: cuDNN RPM libraries for cuda toolkit
-  name: cudnn-download 
+  name: cudnn-download
   versions: !include versions.yaml
   version:  "{{versions.cudnn.version}}"
   release: "{{versions.cudnn.release}}"
-  src_tar: 
+  src_tar:
   src_dir: .
   extension:
   description: >
-    NVIDIA cuDNN libraries {{version}} RPMs for use with CUDA Toolkit. 
+    NVIDIA cuDNN libraries {{version}} RPMs for use with CUDA Toolkit.
   build:
-    configure: echo 
-    configure_args: 
+    configure: echo
+    configure_args:
     pkgmake: echo 'copied RPMs from google drive'
-    target: 
+    target:
   install:
      makeinstall: >
        {{build.pkgmake}} > $(ROOT){{root}}/{{name}}.sh;

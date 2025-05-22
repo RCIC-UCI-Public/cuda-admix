@@ -1,5 +1,5 @@
 !include cuda-common.yaml
 ---
-- package: CUDA Definitions 
+- package: CUDA Definitions
   name: "{{basename}}"
   src_tarball: "{{cuda.src_tarball}}"

@@ -1,7 +1,7 @@
 !include rcic-package.yaml
 ---
 - package: gdrcopy
-  name: gdrcopy 
+  name: gdrcopy
   versions: !include versions.yaml
   version: "{{versions.gdrcopy}}"
   cuda_name: cuda

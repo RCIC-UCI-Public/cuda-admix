@@ -4,4 +4,4 @@
   name: "{{basename}}-doc"
   description: >
     CUDA Toolkit Version {{cuda.version}} Documentation
-  findArgs: -path ./doc\* 
+  findArgs: -path ./doc\*

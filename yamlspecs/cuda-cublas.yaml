@@ -1,8 +1,8 @@
 !include cuda-common.yaml
 ---
-- package: CUDA Cublas 
+- package: CUDA Cublas
   name: "cuda-cublas"
   description: >
-    CUDA CUBLAS {{cuda.version}} 
-  findArgs: -path ./cublas\* 
+    CUDA CUBLAS {{cuda.version}}
+  findArgs: -path ./cublas\*
   toplevel:

@@ -1,18 +1,18 @@
 !include rcic-package.yaml
 ---
-- package: CUDA Definitions 
+- package: CUDA Definitions
   basename: cuda-toolkit
   release: "{{versions.rpmrelcuda}}"
   cudabaserpm: "{{basename}}_{{cuda.shortversion}}"
   versions: !include versions.yaml
-  version: "{{cuda.shortversion}}" 
+  version: "{{cuda.shortversion}}"
   vendor_source: http://developer.download.nvidia.com/compute/{{cuda.shortversion}}/10.1/Prod/local_installers/{{cuda.src_tarball}}
   cuda:
     name: cuda
     shortversion: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
     version: "{{cuda.shortversion}}_{{versions.cuda.fullrelease}}"
     major: "{{versions.cuda.major}}"
-    minor: "{{versions.cuda.minor}}" 
+    minor: "{{versions.cuda.minor}}"
     extension: run
     src_tarball: "{{cuda.name}}_{{cuda.version}}_linux.{{cuda.extension}}"
   src_tarball:
@@ -28,9 +28,9 @@
   listing: listing
   findArgs:
   build:
-    configure: echo no configure required 
-    configure_args: echo no configure required 
-    pkgmake: echo files extracted during {{basename}} build 
+    configure: echo no configure required
+    configure_args: echo no configure required
+    pkgmake: echo files extracted during {{basename}} build
   install:
     makeinstall: >
       pushd {{extractDir}}{{toplevel}};

@@ -1,12 +1,12 @@
 !include cuda-common.yaml
 !include rpm.yaml
 ---
-- package: CUDA toolkit nsight 
+- package: CUDA toolkit nsight
   name: "{{basename}}-nsight"
   description: >
-    CUDA Toolkit Version {{cuda.version}} nsight Eclipse plugin 
-  findArgs: -path ./\*nsight\* -o -name \*nsight\* 
-  addfile: 
+    CUDA Toolkit Version {{cuda.version}} nsight Eclipse plugin
+  findArgs: -path ./\*nsight\* -o -name \*nsight\*
+  addfile:
     - filter-requires-{{name}}.sh
   rpmFilters: *filterRequires
   rpmBuildIdLinks: none

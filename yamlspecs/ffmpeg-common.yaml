@@ -1,14 +1,14 @@
 !include rcic-package.yaml
 ---
-- package: ffmpeg multimedia framework 
-  name: ffmpeg 
+- package: ffmpeg multimedia framework
+  name: ffmpeg
   versions: !include versions.yaml
   version: "{{versions.ffmpeg}}"
   extension: tar.bz2
   release: 3
   vendor_source: https://ffmpeg.org/releases/ffmpeg-{{version}}.tar.bz2
   description: |
-    FFmpeg {{version}}. FFmpeg is the leading multimedia framework, able to
+    FFmpeg is the leading multimedia framework. It is able to
     decode, encode, transcode, mux, demux, stream, filter and play pretty
     much anything that humans and machines have created. To find specific
     versions of included libraries execute command ffmpeg -version.
