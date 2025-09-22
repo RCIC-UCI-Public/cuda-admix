@@ -1,9 +1,7 @@
-# include cuda version file to which an updated driver is added
+# for cuda 13.0.1 and its embedded driver
 !include versions-122.yaml
 ---
-# update release to higher then correspoding cuda driver rpm release
 rpmrelcuda: 13
-# new driver info 
 cuda:
   major: "13"
   minor: "0"
