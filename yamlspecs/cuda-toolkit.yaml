@@ -27,7 +27,8 @@
       mkdir -p {{tmpdir}};
       mkdir -p {{extractDir}};
       export TMPDIR={{tmpdir}};
-      sh {{src_tarball}} --silent --toolkit --samples {{build.skipcheck}} --{{extractarg}}={{extractDir}}
+      sh {{src_tarball}} --silent --toolkit --samples {{build.skipcheck}} --{{extractarg}}={{extractDir}};
+      if [ -f /etc/ld.so.conf.d/cuda-{{cuda.major}}-{{cuda.minor}}.conf ]; then rm /etc/ld.so.conf.d/cuda-{{cuda.major}}-{{cuda.minor}}.conf; fi
   requires: ""
   rpmFilters: *filterRequires
   rpmBuildIdLinks: none
