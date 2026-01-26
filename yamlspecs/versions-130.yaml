@@ -12,3 +12,4 @@ cuda_driver:
   major: "13"
   minor: "0"
   version: "580.82.07"
+gdrcopy: "2.5.1"

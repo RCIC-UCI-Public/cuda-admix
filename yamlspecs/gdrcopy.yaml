@@ -14,10 +14,11 @@
     See https://github.com/NVIDIA/gdrcopy for info how to use GPUDirect RDMA
   systemd_dir: /etc/systemd/system
   installer: gdrdrv-installer.sh
-  service: "gdrdrv-installer.service"
+  serviceTemplate: "gdrdrv-installer.service"
+  service: "gdrdrv-installer-{{version}}.service"
   addfile:
     - "{{installer}}"
-    - "{{service}}"
+    - "{{serviceTemplate}}"
   build:
     modules:
        - "{{cuda_name}}/{{cuda_version}}"
@@ -33,7 +34,7 @@
       sed -i 's/%VERSION%/{{version}}/' $(ROOT)/{{root}}/{{installer}};
       sed -i 's/%CUDA_VERSION%/{{cuda_version}}/' $(ROOT)/{{root}}/{{installer}};
       mkdir -p $(ROOT)/{{systemd_dir}};
-      $(INSTALL) -m 644 ../{{service}}  $(ROOT)/{{systemd_dir}};
+      $(INSTALL) -m 644 ../{{serviceTemplate}}  $(ROOT)/{{systemd_dir}}/{{service}};
       sed -i 's@%PATH%@{{root}}@' $(ROOT)/{{systemd_dir}}/{{service}}
   files:
     - "{{parent}}"

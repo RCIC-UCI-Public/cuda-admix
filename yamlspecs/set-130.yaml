@@ -6,3 +6,5 @@ bootstrap:
    - "{{bootstrap_cuda}}"
 build:
    - cuda-driver
+   - gdrcopy
+   - gdrcopy-module

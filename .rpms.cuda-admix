@@ -1,3 +1,4 @@
+ls -l RPMS/*/ | grep rpm | awk '{printf "%-15.f %s\n", int($5/100)*100, $9}'
 394666800       cuda-driver_13.0.1-13.0.1-13.x86_64.rpm
 587405500       cuda-toolkit-nsight_11.4.0-11.4.0-10.x86_64.rpm
 721116600       cuda-toolkit-nsight_11.7.1-11.7.1-10.x86_64.rpm
@@ -23,8 +24,10 @@
 8200            ffmpeg_6.1-module-6.1-1.x86_64.rpm
 74000           ffnvcodec_12.1.14.0-12.1.14.0-1.x86_64.rpm
 7700            ffnvcodec_12.1.14.0-module-12.1.14.0-1.x86_64.rpm
-270800          gdrcopy_2.4.1-2.4.1-1.x86_64.rpm
+270900          gdrcopy_2.4.1-2.4.1-1.x86_64.rpm
 7800            gdrcopy_2.4.1-module-2.4.1-1.x86_64.rpm
+379000          gdrcopy_2.5.1-2.5.1-1.x86_64.rpm
+7800            gdrcopy_2.5.1-module-2.5.1-1.x86_64.rpm
 703780600       libcudnn8-8.9.6.50-1.cuda12.2.x86_64.rpm
 726521000       libcudnn8-devel-8.9.6.50-1.cuda12.2.x86_64.rpm
 1722800         libcudnn8-samples-8.9.6.50-1.cuda12.2.x86_64.rpm

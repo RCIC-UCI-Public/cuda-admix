@@ -24,3 +24,4 @@ a20e12302b1127d172a06d7a2d18262daa7501e4  sources/libcudnn8-8.9.6.50-1.cuda12.2.
 9a83f8524b541948aeeaa7e971014c29a7e39d59  sources/NVIDIA-Linux-x86_64-535.230.02.run
 c36b5b6ddb549c8fe253b3872bd1e9310fb0962a  sources/cuda_13.0.1_580.82.07_linux.run
 98b09c8d91769343ad14c375cd811d5948ed9df7  sources/NVIDIA-Linux-x86_64-580.82.07.run
+3e8d37a981dd69dd0c303a1285aaddcb543130fd  sources/gdrcopy-2.5.1.tar.gz
