@@ -1,0 +1,13 @@
+Use this template for high performance scaling (replaces use of NPP)
+when using ffmpeg 8 with cuda 13 :
+
+./ffmpeg -hwaccel cuda -hwaccel_output_format cuda \
+  -i input.mp4 \
+  -vf "scale_cuda=1920:1080" \
+  -c:v h264_nvenc \
+  output.mp4
+
+
+Verify ffmpeg is fully functional with hardware acceleration
+
+./ffmpeg -filters | grep cuda
