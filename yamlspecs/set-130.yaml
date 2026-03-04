@@ -4,7 +4,11 @@
 versions: versions-130.yaml
 bootstrap:
    - "{{bootstrap_cuda}}"
+   - ffnvcodec
+   - ffnvcodec-module
 build:
    - cuda-driver
    - gdrcopy
    - gdrcopy-module
+   - ffmpeg80
+   - ffmpeg80-module

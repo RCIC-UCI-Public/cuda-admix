@@ -25,3 +25,5 @@ a20e12302b1127d172a06d7a2d18262daa7501e4  sources/libcudnn8-8.9.6.50-1.cuda12.2.
 c36b5b6ddb549c8fe253b3872bd1e9310fb0962a  sources/cuda_13.0.1_580.82.07_linux.run
 98b09c8d91769343ad14c375cd811d5948ed9df7  sources/NVIDIA-Linux-x86_64-580.82.07.run
 3e8d37a981dd69dd0c303a1285aaddcb543130fd  sources/gdrcopy-2.5.1.tar.gz
+f374d8168db5ac3138219d2bcbb562f5d5ada46c  sources/ffnvcodec-13.0.19.0.tar.gz
+c2f6d5fcbd3068c1c8b5af867dfa6809c456e6b4  sources/ffmpeg-8.0.1.tar.bz2

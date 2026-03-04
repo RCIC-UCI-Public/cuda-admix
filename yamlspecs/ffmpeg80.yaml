@@ -1,0 +1,35 @@
+## Build the 80 versions of libraries for CUDA
+!include ffmpeg-common.yaml
+---
+- version: "{{versions.ffmpeg80}}"
+  cuda_name: cuda
+  cuda_version: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
+  vendor_source: https://www.ffmpeg.org/releases/{{name}}-{{version}}.tar.bz2
+  release: 1
+  description: |
+    FFmpeg {{version}} is the leading multimedia framework. It is able to
+    decode, encode, transcode, mux, demux, stream, filter and play pretty
+    much anything that humans and machines have created. NPP scaling filter
+    is disabled.
+    To find specific versions of included libraries run command ffmpeg -version.
+    To find available acceleration filters run command ffmpeg -filters | grep cuda.
+    See ffmpeg documentation on https://ffmpeg.org
+  build:
+     modules:
+       - cmake/{{versions.cmake}}
+       - "{{versions.compiler.name}}/{{versions.compiler.version}}"
+       - "{{cuda_name}}/{{cuda_version}}"
+       - ffnvcodec/{{versions.ffnvcodec}}
+     configure_args: >
+       --disable-vulkan
+       --disable-x86asm
+       --enable-shared
+       --enable-nonfree
+       --enable-cuda-nvcc
+       --disable-libnpp
+       --extra-cflags='-I./compat/stdbit -I$$CUDA_PATH/include'
+       --nvccflags='-allow-unsupported-compiler -gencode arch=compute_80,code=sm_80 -O2'
+       --enable-gpl
+       --prefix={{root}}
+  install:
+    makeinstall: unset MAKEFLAGS; $(MAKE) DESTDIR=$(ROOT) PREFIX={{root}} install
