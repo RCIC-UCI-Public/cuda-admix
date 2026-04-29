@@ -1,5 +1,0 @@
-# module for ffmpeg54
-!include ffmpeg54.yaml
-!include ffmpeg-common-module.yaml
----
-- version: "{{versions.ffmpeg54}}"

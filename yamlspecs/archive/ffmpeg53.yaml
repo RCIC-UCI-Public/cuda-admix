@@ -1,6 +1,0 @@
-## Build the 53 versions of libraries for CUDA
-!include ffmpeg-common.yaml
----
-- version: "{{versions.ffmpeg53}}"
-  build:
-     configure_args: --enable-shared --disable-yasm --prefix={{root}}
