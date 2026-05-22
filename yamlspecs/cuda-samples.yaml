@@ -1,5 +1,4 @@
 !include cuda-common.yaml
-!include rpm.yaml
 ---
 - package: CUDA toolkit samples
   name: "{{basename}}-samples"
