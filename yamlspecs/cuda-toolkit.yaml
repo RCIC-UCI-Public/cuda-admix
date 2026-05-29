@@ -17,6 +17,7 @@
     - filter-requires-{{name}}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp-{{version}}
   findArgs: -not -path ./doc\* -not -path ./samples\* -not -path ./\*nsight\* -not -name \*nsight\* -not -name \*.a
+  rmi686: !eval "'1' if {{versions.os_release}} >= 10 else '0'"
 # toplevel: !ifeq "{{cuda.major}},10,/cuda-toolkit,"
   build:
     skipcheck: !eval "'--override' if {{versions.os_release}} >= 9 else ''"
@@ -27,7 +28,8 @@
       mkdir -p {{extractDir}};
       export TMPDIR={{tmpdir}};
       sh {{src_tarball}} --silent --toolkit --samples {{build.skipcheck}} --{{extractarg}}={{extractDir}};
-      if [ -f /etc/ld.so.conf.d/cuda-{{cuda.major}}-{{cuda.minor}}.conf ]; then rm /etc/ld.so.conf.d/cuda-{{cuda.major}}-{{cuda.minor}}.conf; fi
+      if [ -f /etc/ld.so.conf.d/cuda-{{cuda.major}}-{{cuda.minor}}.conf ]; then rm /etc/ld.so.conf.d/cuda-{{cuda.major}}-{{cuda.minor}}.conf; fi;
+      if [ {{rmi686}} ]; then find {{extractDir}} -type f -exec file {} \; | grep "ELF 32-bit" | awk -F: '{print $$1}' | xargs rm -f; fi
   requires: ""
   rpmFilters: *filterRequires
   rpmBuildIdLinks: none
