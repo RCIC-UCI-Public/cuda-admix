@@ -11,7 +11,7 @@ bootstrap_cuda:
    - cuda-toolkit-static-libs
    - cuda-toolkit-nsight
 bootstrap:
-   ~ !eval "'libtiff-so' if int({{site.os_release}}) >= 10 else ''"
+   - !eval "'libtiff-so' if int({{site.os_release}}) >= 10 else ''"
 build:
 manifest:
    - "{{bootstrap}}"
