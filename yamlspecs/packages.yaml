@@ -11,12 +11,13 @@ bootstrap_cuda:
    - cuda-toolkit-static-libs
    - cuda-toolkit-nsight
 bootstrap:
+   ~ !eval "'libtiff-so' if int({{site.os_release}}) >= 10 else ''"
 build:
 manifest:
    - "{{bootstrap}}"
    - "{{build}}"
 sets:
-  - !eval "'101' if {{site.os_release}} < 9 else ''"
+  - !eval "'101' if int({{site.os_release}}) < 9 else ''"
   - "114"
   - "117"
   - "122"

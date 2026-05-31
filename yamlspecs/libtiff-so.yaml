@@ -1,0 +1,26 @@
+!include rcic-package.yaml
+!include rpm.yaml
+---
+- package: libtiff compatibility shared object lib 
+  name: libtiff-so 
+  root: /usr/lib64
+  versions: !include versions.yaml
+  version: "{{versions.libtiff}}"
+  vendor_source: https://download.osgeo.org/libtiff/tiff-{{version}}.{{extension}}
+  src_tarball: tiff-{{version}}.{{extension}}
+  src_dir: tiff-{{version}}
+  description: |
+    Provides only libtiff.so.5.8.0 and libtiff.so.5 for compatibility with
+    prepackaged binaries.
+  build:
+    configure: ./configure
+  install:
+    makeinstall: >
+      mkdir -p $(ROOT){{root}}; 
+      install libtiff/.libs/libtiff.so.5.8.0 $(ROOT){{root}};
+      (cd $(ROOT){{root}}; ln -s libtiff.so.5.8.0 libtiff.so.5)
+
+  files:
+    - "{{root}}/*"
+  provides:
+    - libtiff.so.5(LIBTIFF_4.0)(64bit)
