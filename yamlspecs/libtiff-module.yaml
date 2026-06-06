@@ -1,0 +1,11 @@
+!include libtiff.yaml
+!include rcic-module.yaml
+---
+- package: libtiff module
+  category: LIBRARIES
+  module:
+    prepend_path:
+      - *Prepend_path
+      - *Flagspath
+    setenv:
+      - *Setenv

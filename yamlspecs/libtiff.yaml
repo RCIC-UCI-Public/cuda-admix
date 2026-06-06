@@ -1,0 +1,17 @@
+!include rcic-package.yaml
+!include rpm.yaml
+---
+- package: libtiff 4
+  name: libtiff 
+  versions: !include versions.yaml
+  version: "{{versions.libtiff}}"
+  vendor_source: https://download.osgeo.org/libtiff/tiff-{{version}}.{{extension}}
+  src_tarball: tiff-{{version}}.{{extension}}
+  src_dir: tiff-{{version}}
+  description: |
+    Provides only libtiff 4 for backwards compatibility. 
+    Used for compilation of some packages on Rocky 10
+  build:
+    configure: ./configure
+  files:
+    - "{{root}}/*"
