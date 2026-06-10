@@ -1,5 +1,4 @@
 ---
-site: !include site.yaml
 system:
    - libaio-devel
    - openmpi-devel
@@ -11,15 +10,14 @@ bootstrap_cuda:
    - cuda-toolkit-static-libs
    - cuda-toolkit-nsight
 bootstrap:
-   - !eval "'libtiff-so' if int({{site.os_release}}) >= 10 else ''"
+   - !OScmp ">=,10,libtiff-so,"
 build:
 manifest:
    - "{{bootstrap}}"
    - "{{build}}"
 sets:
-  - !eval "'101' if int({{site.os_release}}) < 9 else ''"
+  - !OScmp "<,9,101,"
   - "114"
   - "117"
   - "122"
   - "130"
-# - driver

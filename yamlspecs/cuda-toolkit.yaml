@@ -17,10 +17,9 @@
     - filter-requires-{{name}}.sh
   tmpdir: $(REDHAT.BUILD)/cudaTmp-{{version}}
   findArgs: -not -path ./doc\* -not -path ./samples\* -not -path ./\*nsight\* -not -name \*nsight\* -not -name \*.a
-  rmi686: !eval "'1' if {{versions.os_release}} >= 10 else '0'"
-# toplevel: !ifeq "{{cuda.major}},10,/cuda-toolkit,"
+  rmi686: !OScmp ">=,10,1,0" 
   build:
-    skipcheck: !eval "'--override' if {{versions.os_release}} >= 9 else ''"
+    skipcheck: !OScmp ">=,9,--override,"
     pkgmake: >
       if [ -d {{extractDir}} ]; then /bin/rm -rf {{extractDir}}; fi;
       if [ -d {{tmpdir}} ]; then /bin/rm -rf {{tmpdir}}; fi;
