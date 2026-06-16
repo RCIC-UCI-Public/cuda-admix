@@ -5,7 +5,7 @@
   cuda_name: cuda
   cuda_version: "{{versions.cuda.major}}.{{versions.cuda.minor}}.{{versions.cuda.subrelease}}"
   release: 1
-  opt10: !eval "'--disable-inline-asm --disable-doc' if int({{versions.os_release}}) >= 10 else ''"
+  opt10: !OScmp ">=,10,--disable-inline-asm --disable-doc,"
   build:
      modules:
        - "{{versions.compiler.name}}/{{versions.compiler.version}}"

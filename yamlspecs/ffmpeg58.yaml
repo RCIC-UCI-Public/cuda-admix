@@ -2,6 +2,6 @@
 !include ffmpeg-common.yaml
 ---
 - version: "{{versions.ffmpeg58}}"
-  opt10: !eval "'--disable-inline-asm --disable-doc' if int({{versions.os_release}}) >= 10 else ''"
+  opt10: !OScmp ">=,10,--disable-inline-asm --disable-doc,"
   build:
      configure_args: --enable-shared {{opt10}} --disable-yasm --prefix={{root}}
